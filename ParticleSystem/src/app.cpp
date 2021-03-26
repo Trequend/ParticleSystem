@@ -7,6 +7,13 @@
 #include <imgui_impl_opengl3.h>
 #include <imgui_impl_glfw.h>
 
+#include "Scene.hpp"
+
+void RegisterScenes()
+{
+
+}
+
 void HandleErrorGLFW(int errorCode, const char* description)
 {
 	std::cerr << "GLFW (" << errorCode << "): " << description << std::endl;
@@ -72,8 +79,43 @@ void RenderImGuiFrame()
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 }
 
+void ProcessCurrentScene()
+{
+	if (!Scene::CurrentExists())
+	{
+		return;
+	}
+
+	Scene& scene = Scene::GetCurrent();
+	
+	scene.Update();
+	if (scene.IsDestroyed())
+	{
+		return;
+	}
+
+	scene.Render();
+	if (scene.IsDestroyed())
+	{
+		return;
+	}
+}
+
+void ProcessCurrentSceneUI()
+{
+	if (!Scene::CurrentExists())
+	{
+		return;
+	}
+
+	Scene& scene = Scene::GetCurrent();
+	scene.UI();
+}
+
 int main()
 {
+	RegisterScenes();
+
 	if (!InitGLFW())
 	{
 		return EXIT_FAILURE;
@@ -97,15 +139,16 @@ int main()
 		glfwPollEvents();
 		glClear(GL_COLOR_BUFFER_BIT);
 
+		ProcessCurrentScene();
+
 		ImGuiNewFrame();
-
-		
-
+		ProcessCurrentSceneUI();
 		RenderImGuiFrame();
 
 		glfwSwapBuffers(window);
 	}
 
+	Scene::CloseCurrent();
 	glfwTerminate();
 	return EXIT_SUCCESS;
 }
