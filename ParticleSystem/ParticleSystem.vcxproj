@@ -149,6 +149,7 @@
   <ItemGroup>
     <ClCompile Include="src\Scene.cpp" />
     <ClCompile Include="src\App.cpp" />
+    <ClCompile Include="src\Transform.cpp" />
     <ClCompile Include="vendor\glm\glm\detail\glm.cpp" />
     <ClCompile Include="vendor\imgui\imgui.cpp" />
     <ClCompile Include="vendor\imgui\imgui_demo.cpp" />
@@ -160,6 +161,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Scene.hpp" />
+    <ClInclude Include="src\Transform.hpp" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\compute_common.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\compute_vector_relational.hpp" />
