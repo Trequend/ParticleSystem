@@ -70,9 +70,21 @@ bool Scene::CurrentExists()
 	return currentScene != nullptr;
 }
 
-void Scene::Update() { }
+void Scene::Update()
+{
+	for (objectIndex = 0; objectIndex < objects.size(); objectIndex++)
+	{
+		objects[objectIndex]->Update();
+	}
+}
 
-void Scene::Render() { }
+void Scene::Render()
+{
+	for (objectIndex = 0; objectIndex < objects.size(); objectIndex++)
+	{
+		objects[objectIndex]->Render();
+	}
+}
 
 void Scene::UI() { }
 
@@ -81,4 +93,23 @@ void Scene::OnDestroy() { }
 bool Scene::IsDestroyed() const
 {
 	return isDestroyed;
+}
+
+void Scene::RemoveObjectAt(size_t index)
+{
+	if (index >= objects.size())
+	{
+		return;
+	}
+
+	objects.erase(objects.begin() + index);
+	if (objectIndex >= index)
+	{
+		objectIndex--;
+	}
+}
+
+const std::vector<std::shared_ptr<SceneObject>>& Scene::GetObjects()
+{
+	return objects;
 }

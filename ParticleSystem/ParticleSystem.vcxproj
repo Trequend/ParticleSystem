@@ -147,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\SceneObject.cpp" />
     <ClCompile Include="src\Scene.cpp" />
     <ClCompile Include="src\App.cpp" />
     <ClCompile Include="src\Transform.cpp" />
@@ -160,6 +161,7 @@
     <ClCompile Include="vendor\imgui\imgui_widgets.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\SceneObject.hpp" />
     <ClInclude Include="src\Scene.hpp" />
     <ClInclude Include="src\Transform.hpp" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
