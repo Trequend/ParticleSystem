@@ -1,6 +1,7 @@
 #include <cstdlib>
 #include <iostream>
 
+#include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
 void HandleErrorGLFW(int errorCode, const char* description)
@@ -8,31 +9,61 @@ void HandleErrorGLFW(int errorCode, const char* description)
 	std::cerr << "GLFW (" << errorCode << "): " << description << std::endl;
 }
 
-int InitGLFW()
+bool InitGLFW()
 {
 	glfwSetErrorCallback(HandleErrorGLFW);
-	return glfwInit();
+	if (!glfwInit())
+	{
+		std::cerr << "(GLFW) failed to initialize" << std::endl;
+		return false;
+	}
+	
+	return true;
 }
 
 GLFWwindow* CreateWindow(int width, int height, const char* title)
 {
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-	return glfwCreateWindow(width, height, title, NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(width, height, title, nullptr, nullptr);
+	if (!window)
+	{
+		std::cerr << "(GLFW) failed to create window" << std::endl;
+		return nullptr;
+	}
+	
+	glfwMakeContextCurrent(window);
+	return window;
+}
+
+bool InitGLEW()
+{
+	unsigned int code = glewInit();
+	if (code != GLEW_OK)
+	{
+		std::cerr << "GLEW: " << glewGetErrorString(code) << std::endl;
+		std::cerr << "(GLEW) failed to initialize" << std::endl;
+		return false;
+	}
+
+	return true;
 }
 
 int main()
 {
 	if (!InitGLFW())
 	{
-		std::cerr << "(GLFW) failed to initialize" << std::endl;
 		return EXIT_FAILURE;
 	}
 
 	GLFWwindow* window = CreateWindow(1280, 720, "Particle system");
 	if (!window)
 	{
-		std::cerr << "(GLFW) failed to create window" << std::endl;
+		return EXIT_FAILURE;
+	}
+
+	if (!InitGLEW())
+	{
 		return EXIT_FAILURE;
 	}
 
@@ -45,6 +76,5 @@ int main()
 	}
 
 	glfwTerminate();
-
 	return EXIT_SUCCESS;
 }
