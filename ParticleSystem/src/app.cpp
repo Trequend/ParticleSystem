@@ -4,6 +4,9 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
+#include <imgui_impl_opengl3.h>
+#include <imgui_impl_glfw.h>
+
 void HandleErrorGLFW(int errorCode, const char* description)
 {
 	std::cerr << "GLFW (" << errorCode << "): " << description << std::endl;
@@ -49,6 +52,26 @@ bool InitGLEW()
 	return true;
 }
 
+void InitImGui(GLFWwindow* window)
+{
+	ImGui::CreateContext();
+	ImGui_ImplGlfw_InitForOpenGL(window, true);
+	ImGui_ImplOpenGL3_Init();
+}
+
+void ImGuiNewFrame()
+{
+	ImGui_ImplOpenGL3_NewFrame();
+	ImGui_ImplGlfw_NewFrame();
+	ImGui::NewFrame();
+}
+
+void RenderImGuiFrame()
+{
+	ImGui::Render();
+	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+}
+
 int main()
 {
 	if (!InitGLFW())
@@ -67,10 +90,18 @@ int main()
 		return EXIT_FAILURE;
 	}
 
+	InitImGui(window);
+
 	while (!glfwWindowShouldClose(window))
 	{
 		glfwPollEvents();
 		glClear(GL_COLOR_BUFFER_BIT);
+
+		ImGuiNewFrame();
+
+		
+
+		RenderImGuiFrame();
 
 		glfwSwapBuffers(window);
 	}
