@@ -9,6 +9,9 @@ const unsigned char* GLInfo::version;
 const unsigned char* GLInfo::glslVersion;
 int GLInfo::major;
 int GLInfo::minor;
+glm::ivec3 GLInfo::maxComputeWorkGroupCount;
+glm::ivec3 GLInfo::maxComputeWorkGroupSize;
+int GLInfo::maxComputeWorkGroupInvocations;
 
 void GLInfo::Initialize()
 {
@@ -25,6 +28,14 @@ void GLInfo::Initialize()
 
 	glGetIntegerv(GL_MAJOR_VERSION, &major);
 	glGetIntegerv(GL_MINOR_VERSION, &minor);
+
+	for (size_t i = 0; i < 3; i++)
+	{
+		glGetIntegeri_v(GL_MAX_COMPUTE_WORK_GROUP_COUNT, i, &maxComputeWorkGroupCount[i]);
+		glGetIntegeri_v(GL_MAX_COMPUTE_WORK_GROUP_SIZE, i, &maxComputeWorkGroupSize[i]);
+	}
+
+	glGetIntegerv(GL_MAX_COMPUTE_WORK_GROUP_INVOCATIONS, &maxComputeWorkGroupInvocations);
 }
 
 const unsigned char* GLInfo::Vendor()
@@ -61,4 +72,22 @@ int GLInfo::Minor()
 {
 	Initialize();
 	return minor;
+}
+
+const glm::ivec3& GLInfo::MaxComputeWorkGroupCount()
+{
+	Initialize();
+	return maxComputeWorkGroupCount;
+}
+
+const glm::ivec3& GLInfo::MaxComputeWorkGroupSize()
+{
+	Initialize();
+	return maxComputeWorkGroupSize;
+}
+
+const int GLInfo::MaxComputeWorkGroupInvocations()
+{
+	Initialize();
+	return maxComputeWorkGroupInvocations;
 }
