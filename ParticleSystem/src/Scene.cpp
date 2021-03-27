@@ -90,7 +90,7 @@ bool Scene::CurrentExists()
 
 void Scene::Update()
 {
-	for (objectIndex = 0; objectIndex < objects.size(); objectIndex++)
+	for (objectIndex = 0; !isDestroyed && objectIndex < objects.size(); objectIndex++)
 	{
 		objects[objectIndex]->Update();
 	}
@@ -98,13 +98,23 @@ void Scene::Update()
 
 void Scene::Render()
 {
-	for (objectIndex = 0; objectIndex < objects.size(); objectIndex++)
+	for (objectIndex = 0; !isDestroyed && objectIndex < objects.size(); objectIndex++)
 	{
 		objects[objectIndex]->Render();
 	}
 }
 
-void Scene::UI() { }
+void Scene::UI()
+{
+	OnUI();
+
+	for (objectIndex = 0; !isDestroyed && objectIndex < objects.size(); objectIndex++)
+	{
+		objects[objectIndex]->Update();
+	}
+}
+
+void Scene::OnUI() { }
 
 void Scene::OnDestroy() { }
 

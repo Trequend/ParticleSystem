@@ -11,5 +11,6 @@ public:
 	SceneObject() { }
 
 	virtual void Update();
+	virtual void UI();
 	virtual void Render();
 };

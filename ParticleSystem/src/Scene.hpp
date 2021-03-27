@@ -37,7 +37,8 @@ public:
 	virtual void Initialize() = 0;
 	void Update();
 	void Render();
-	virtual void UI();
+	void UI();
+	virtual void OnUI();
 	virtual void OnDestroy();
 	bool IsDestroyed() const;
 	template<class T>
