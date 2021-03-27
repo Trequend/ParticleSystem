@@ -1,10 +1,13 @@
 #pragma once
 
+#include <string>
+
 class Window
 {
 public:
-	Window(bool isOpened = true) : isOpened(isOpened) { }
+	Window(std::string name, bool isOpened = true) : name(name), isOpened(isOpened) { }
 
+	const std::string name;
 	bool isOpened;
 	virtual void Render() = 0;
 };

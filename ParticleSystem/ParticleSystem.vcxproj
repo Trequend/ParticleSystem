@@ -160,6 +160,7 @@
     <ClCompile Include="vendor\imgui\imgui_impl_opengl3.cpp" />
     <ClCompile Include="vendor\imgui\imgui_tables.cpp" />
     <ClCompile Include="vendor\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="src\WindowsManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\SceneSelector.hpp" />
@@ -457,6 +458,7 @@
     <ClInclude Include="vendor\imgui\imstb_textedit.h" />
     <ClInclude Include="vendor\imgui\imstb_truetype.h" />
     <ClInclude Include="src\Window.hpp" />
+    <ClInclude Include="src\WindowsManager.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="vendor\glm\glm\detail\func_common.inl" />

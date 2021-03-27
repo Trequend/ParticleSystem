@@ -14,6 +14,8 @@ private:
 
 	static bool VectorGetter(void* data, int index, const char** outText);
 public:
+	SceneSelector() : Window("Scene selector") { }
+
 	void Render();
 };
 

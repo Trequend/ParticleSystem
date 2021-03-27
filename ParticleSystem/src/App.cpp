@@ -8,6 +8,10 @@
 #include <imgui_impl_glfw.h>
 
 #include "Scene.hpp"
+#include "WindowsManager.hpp"
+#include "SceneSelector.hpp"
+
+WindowsManager windowsManager;
 
 void RegisterScenes()
 {
@@ -31,6 +35,14 @@ bool InitGLFW()
 	return true;
 }
 
+void HandleKeyGLFW(GLFWwindow* window, int key, int scancode, int action, int mode)
+{
+	if (key == GLFW_KEY_W && action == GLFW_PRESS)
+	{
+		windowsManager.isOpened = !windowsManager.isOpened;
+	}
+}
+
 GLFWwindow* CreateWindow(int width, int height, const char* title)
 {
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
@@ -43,6 +55,7 @@ GLFWwindow* CreateWindow(int width, int height, const char* title)
 	}
 	
 	glfwMakeContextCurrent(window);
+	glfwSetKeyCallback(window, HandleKeyGLFW);
 	return window;
 }
 
@@ -134,6 +147,8 @@ int main()
 
 	InitImGui(window);
 
+	windowsManager.AddWindow(new SceneSelector());
+
 	while (!glfwWindowShouldClose(window))
 	{
 		glfwPollEvents();
@@ -143,6 +158,7 @@ int main()
 
 		ImGuiNewFrame();
 		ProcessCurrentSceneUI();
+		windowsManager.Render();
 		RenderImGuiFrame();
 
 		glfwSwapBuffers(window);
