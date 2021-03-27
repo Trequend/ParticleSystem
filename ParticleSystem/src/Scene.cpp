@@ -14,7 +14,7 @@ bool Scene::IsRegistered(const std::string& name)
 
 std::vector<std::string> Scene::GetNamesOfRegistered()
 {
-	std::vector<std::string> registered(sceneConstructors.size());
+	std::vector<std::string> registered;
 	for (auto const& pair : sceneConstructors)
 	{
 		registered.push_back(pair.first);

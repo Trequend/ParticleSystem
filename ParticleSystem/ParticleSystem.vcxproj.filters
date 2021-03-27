@@ -51,6 +51,9 @@
     <ClCompile Include="src\SceneObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\SceneSelector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="vendor\glm\glm\detail\_features.hpp">
@@ -930,6 +933,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\SceneObject.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SceneSelector.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
