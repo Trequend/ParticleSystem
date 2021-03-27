@@ -4,19 +4,16 @@
 #include <string>
 
 #include "Scene.hpp"
+#include "Window.hpp"
 
-class SceneSelector
+class SceneSelector : public Window
 {
 private:
-	bool isOpen = true;
-	int selectedScene;
-	std::vector<std::string> scenes;
+	int selectedScene = 0;
+	std::vector<std::string> scenes = Scene::GetNamesOfRegistered();
 
 	static bool VectorGetter(void* data, int index, const char** outText);
 public:
-	SceneSelector() : scenes(Scene::GetNamesOfRegistered()) { }
-
 	void Render();
-	void Toggle();
 };
 

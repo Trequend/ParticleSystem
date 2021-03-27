@@ -16,20 +16,15 @@ bool SceneSelector::VectorGetter(void* data, int index, const char** outText)
 
 void SceneSelector::Render()
 {
-	if (!isOpen)
+	if (!isOpened)
 	{
 		return;
 	}
 
 	ImGui::SetNextWindowSize(ImVec2(250, 90), ImGuiCond_Always);
-	ImGui::Begin("Scene selector", &isOpen, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse);
+	ImGui::Begin("Scene selector", &isOpened, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse);
 	ImGui::Combo("Scenes", &selectedScene, VectorGetter, &scenes, scenes.size());
 	ImGui::InvisibleButton("##margin", ImVec2(1, 5));
 	ImGui::Button("Select", ImVec2(235, 20));
 	ImGui::End();
-}
-
-void SceneSelector::Toggle()
-{
-	isOpen = !isOpen;
 }
