@@ -17,6 +17,8 @@ WindowsManager windowsManager;
 void RegisterScenes()
 {
 	Scene::Register<Sandbox>("Sandbox");
+
+	Scene::BlockRegistration();
 }
 
 void HandleErrorGLFW(int errorCode, const char* description)

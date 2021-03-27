@@ -2,9 +2,15 @@
 
 #include <stdexcept>
 
+bool Scene::registrationIsAvailable = true;
 bool Scene::changeBlocked;
 Scene* Scene::currentScene;
 std::map<std::string, std::function<Scene* ()>> Scene::sceneConstructors;
+
+void Scene::BlockRegistration()
+{
+	registrationIsAvailable = false;
+}
 
 bool Scene::IsRegistered(const std::string& name)
 {

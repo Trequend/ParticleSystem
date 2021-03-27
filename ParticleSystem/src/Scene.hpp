@@ -12,6 +12,7 @@
 class Scene
 {
 private:
+	static bool registrationIsAvailable;
 	static bool changeBlocked;
 	static Scene* currentScene;
 	static std::map<std::string, std::function<Scene* ()>> sceneConstructors;
@@ -23,6 +24,7 @@ private:
 public:
 	template<class T>
 	static void Register(const std::string& name);
+	static void BlockRegistration();
 	static bool IsRegistered(const std::string& name);
 	static std::vector<std::string> GetNamesOfRegistered();
 	static void Load(const std::string& name);
@@ -47,7 +49,7 @@ void Scene::Register(const std::string& name)
 {
 	static_assert(std::is_base_of<Scene, T>::value);
 
-	if (IsRegistered(name))
+	if (!registrationIsAvailable || IsRegistered(name))
 	{
 		return;
 	}
