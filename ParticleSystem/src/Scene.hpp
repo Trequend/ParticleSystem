@@ -5,6 +5,7 @@
 #include <string>
 #include <functional>
 #include <memory>
+#include <stdexcept>
 
 #include "SceneObject.hpp"
 
@@ -36,7 +37,7 @@ public:
 	virtual void OnDestroy();
 	bool IsDestroyed() const;
 	template<class T>
-	std::weak_ptr<T> AddObject();
+	std::weak_ptr<T> AddObject(T* obj);
 	void RemoveObjectAt(size_t index);
 	const std::vector<std::shared_ptr<SceneObject>>& GetObjects();
 };
@@ -55,11 +56,16 @@ void Scene::Register(const std::string& name)
 }
 
 template<class T>
-inline std::weak_ptr<T> Scene::AddObject()
+inline std::weak_ptr<T> Scene::AddObject(T* object)
 {
 	static_assert(std::is_base_of<SceneObject, T>::value);
 
-	std::shared_ptr<T> ptr(new T());
+	if (object == nullptr)
+	{
+		throw new std::runtime_error("no object");
+	}
+
+	std::shared_ptr<T> ptr(object);
 	objects.push_back(ptr);
 	return std::weak_ptr(ptr);
 }
