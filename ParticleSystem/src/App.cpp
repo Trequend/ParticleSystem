@@ -8,8 +8,9 @@
 #include <imgui_impl_glfw.h>
 
 #include "Scene.hpp"
-#include "WindowsManager.hpp"
-#include "SceneSelector.hpp"
+#include "windows/WindowsManager.hpp"
+#include "windows/SceneSelector.hpp"
+#include "windows/SceneVariables.hpp"
 #include "scenes/Sandbox.hpp"
 
 WindowsManager windowsManager;
@@ -117,17 +118,6 @@ void ProcessCurrentScene()
 	}
 }
 
-void ProcessCurrentSceneUI()
-{
-	if (!Scene::CurrentExists())
-	{
-		return;
-	}
-
-	Scene& scene = Scene::GetCurrent();
-	scene.UI();
-}
-
 int main()
 {
 	RegisterScenes();
@@ -151,6 +141,7 @@ int main()
 	InitImGui(window);
 
 	windowsManager.AddWindow(new SceneSelector());
+	windowsManager.AddWindow(new SceneVariables());
 
 	while (!glfwWindowShouldClose(window))
 	{
@@ -160,7 +151,6 @@ int main()
 		ProcessCurrentScene();
 
 		ImGuiNewFrame();
-		ProcessCurrentSceneUI();
 		windowsManager.Render();
 		RenderImGuiFrame();
 

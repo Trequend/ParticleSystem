@@ -8,7 +8,7 @@ void WindowsManager::Render()
 	}
 
 	ImGui::SetNextWindowSize(ImVec2(250, 150), ImGuiCond_FirstUseEver);
-	ImGui::Begin("Windows", &isOpened, ImGuiWindowFlags_NoResize);
+	ImGui::Begin(name.c_str(), &isOpened, ImGuiWindowFlags_NoResize);
 	for (size_t i = 0; i < windows.size(); i++)
 	{
 		ImGui::Checkbox(windows[i]->name.c_str(), &windows[i]->isOpened);

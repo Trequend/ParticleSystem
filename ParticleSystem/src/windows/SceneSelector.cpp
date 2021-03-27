@@ -22,7 +22,7 @@ void SceneSelector::Render()
 	}
 
 	ImGui::SetNextWindowSize(ImVec2(250, 115), ImGuiCond_Always);
-	ImGui::Begin("Scene selector", &isOpened, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse);
+	ImGui::Begin(name.c_str(), &isOpened, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse);
 	if (Scene::CurrentExists())
 	{
 		ImGui::Text("Current scene: %s", Scene::GetCurrentSceneName().c_str());

@@ -147,8 +147,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\windows\SceneVariables.cpp" />
     <ClCompile Include="src\scenes\Sandbox.cpp" />
-    <ClCompile Include="src\SceneSelector.cpp" />
+    <ClCompile Include="src\windows\SceneSelector.cpp" />
     <ClCompile Include="src\SceneObject.cpp" />
     <ClCompile Include="src\Scene.cpp" />
     <ClCompile Include="src\App.cpp" />
@@ -161,11 +162,12 @@
     <ClCompile Include="vendor\imgui\imgui_impl_opengl3.cpp" />
     <ClCompile Include="vendor\imgui\imgui_tables.cpp" />
     <ClCompile Include="vendor\imgui\imgui_widgets.cpp" />
-    <ClCompile Include="src\WindowsManager.cpp" />
+    <ClCompile Include="src\windows\WindowsManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\windows\SceneVariables.hpp" />
     <ClInclude Include="src\scenes\Sandbox.hpp" />
-    <ClInclude Include="src\SceneSelector.hpp" />
+    <ClInclude Include="src\windows\SceneSelector.hpp" />
     <ClInclude Include="src\SceneObject.hpp" />
     <ClInclude Include="src\Scene.hpp" />
     <ClInclude Include="src\Transform.hpp" />
@@ -459,8 +461,8 @@
     <ClInclude Include="vendor\imgui\imstb_rectpack.h" />
     <ClInclude Include="vendor\imgui\imstb_textedit.h" />
     <ClInclude Include="vendor\imgui\imstb_truetype.h" />
-    <ClInclude Include="src\Window.hpp" />
-    <ClInclude Include="src\WindowsManager.hpp" />
+    <ClInclude Include="src\windows\Window.hpp" />
+    <ClInclude Include="src\windows\WindowsManager.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="vendor\glm\glm\detail\func_common.inl" />
