@@ -147,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Resources.cpp" />
     <ClCompile Include="src\windows\Environment.cpp" />
     <ClCompile Include="src\GLInfo.cpp" />
     <ClCompile Include="src\windows\SceneVariables.cpp" />
@@ -167,6 +168,7 @@
     <ClCompile Include="src\windows\WindowsManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Resources.hpp" />
     <ClInclude Include="src\windows\Environment.hpp" />
     <ClInclude Include="src\GLInfo.hpp" />
     <ClInclude Include="src\windows\SceneVariables.hpp" />
