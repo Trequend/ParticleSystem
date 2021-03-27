@@ -21,7 +21,7 @@ void GLInfo::Initialize()
 	vendor = glGetString(GL_VENDOR);
 	renderer = glGetString(GL_RENDERER);
 	version = glGetString(GL_VERSION);
-	glGetString(GL_SHADING_LANGUAGE_VERSION);
+	glslVersion = glGetString(GL_SHADING_LANGUAGE_VERSION);
 
 	glGetIntegerv(GL_MAJOR_VERSION, &major);
 	glGetIntegerv(GL_MINOR_VERSION, &minor);

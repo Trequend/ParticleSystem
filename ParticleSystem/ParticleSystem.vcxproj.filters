@@ -66,6 +66,9 @@
     <ClCompile Include="src\GLInfo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\windows\Environment.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="vendor\glm\glm\detail\_features.hpp">
@@ -963,6 +966,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GLInfo.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\windows\Environment.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

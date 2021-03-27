@@ -11,6 +11,7 @@
 #include "windows/WindowsManager.hpp"
 #include "windows/SceneSelector.hpp"
 #include "windows/SceneVariables.hpp"
+#include "windows/Environment.hpp"
 #include "scenes/Sandbox.hpp"
 
 WindowsManager windowsManager;
@@ -142,6 +143,7 @@ int main()
 
 	windowsManager.AddWindow(new SceneSelector());
 	windowsManager.AddWindow(new SceneVariables());
+	windowsManager.AddWindow(new Environment());
 
 	while (!glfwWindowShouldClose(window))
 	{
