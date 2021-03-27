@@ -10,12 +10,13 @@
 #include "Scene.hpp"
 #include "WindowsManager.hpp"
 #include "SceneSelector.hpp"
+#include "scenes/Sandbox.hpp"
 
 WindowsManager windowsManager;
 
 void RegisterScenes()
 {
-
+	Scene::Register<Sandbox>("Sandbox");
 }
 
 void HandleErrorGLFW(int errorCode, const char* description)

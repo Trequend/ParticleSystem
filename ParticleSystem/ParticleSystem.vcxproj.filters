@@ -57,6 +57,9 @@
     <ClCompile Include="src\WindowsManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\scenes\Sandbox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="vendor\glm\glm\detail\_features.hpp">
@@ -945,6 +948,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\WindowsManager.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scenes\Sandbox.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

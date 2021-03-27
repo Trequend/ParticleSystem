@@ -25,6 +25,9 @@ void SceneSelector::Render()
 	ImGui::Begin("Scene selector", &isOpened, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse);
 	ImGui::Combo("Scenes", &selectedScene, VectorGetter, &scenes, scenes.size());
 	ImGui::InvisibleButton("##margin", ImVec2(1, 5));
-	ImGui::Button("Select", ImVec2(235, 20));
+	if (ImGui::Button("Select", ImVec2(235, 20)))
+	{
+		Scene::Load(scenes[selectedScene]);
+	}
 	ImGui::End();
 }

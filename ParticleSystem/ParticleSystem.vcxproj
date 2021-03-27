@@ -147,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\scenes\Sandbox.cpp" />
     <ClCompile Include="src\SceneSelector.cpp" />
     <ClCompile Include="src\SceneObject.cpp" />
     <ClCompile Include="src\Scene.cpp" />
@@ -163,6 +164,7 @@
     <ClCompile Include="src\WindowsManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\scenes\Sandbox.hpp" />
     <ClInclude Include="src\SceneSelector.hpp" />
     <ClInclude Include="src\SceneObject.hpp" />
     <ClInclude Include="src\Scene.hpp" />

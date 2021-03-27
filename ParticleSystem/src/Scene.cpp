@@ -30,13 +30,13 @@ void Scene::Load(const std::string& name)
 		return;
 	}
 
-	CloseCurrent();
 	auto it = sceneConstructors.find(name);
 	if (it == sceneConstructors.end())
 	{
 		return;
 	}
 
+	CloseCurrent();
 	currentScene = it->second();
 	currentScene->Initialize();
 }
