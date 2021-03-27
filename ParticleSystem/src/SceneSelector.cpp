@@ -21,8 +21,17 @@ void SceneSelector::Render()
 		return;
 	}
 
-	ImGui::SetNextWindowSize(ImVec2(250, 90), ImGuiCond_Always);
+	ImGui::SetNextWindowSize(ImVec2(250, 115), ImGuiCond_Always);
 	ImGui::Begin("Scene selector", &isOpened, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse);
+	if (Scene::CurrentExists())
+	{
+		ImGui::Text("Current scene: %s", Scene::GetCurrentSceneName().c_str());
+	}
+	else
+	{
+		ImGui::Text("No current scene");
+	}
+	ImGui::InvisibleButton("##margin", ImVec2(1, 5));
 	ImGui::Combo("Scenes", &selectedScene, VectorGetter, &scenes, scenes.size());
 	ImGui::InvisibleButton("##margin", ImVec2(1, 5));
 	if (ImGui::Button("Select", ImVec2(235, 20)))

@@ -15,6 +15,7 @@ private:
 	static bool registrationIsAvailable;
 	static bool changeBlocked;
 	static Scene* currentScene;
+	static std::string currentSceneName;
 	static std::map<std::string, std::function<Scene* ()>> sceneConstructors;
 
 	bool isDestroyed;
@@ -29,6 +30,7 @@ public:
 	static std::vector<std::string> GetNamesOfRegistered();
 	static void Load(const std::string& name);
 	static Scene& GetCurrent();
+	static const std::string& GetCurrentSceneName();
 	static void CloseCurrent();
 	static bool CurrentExists();
 

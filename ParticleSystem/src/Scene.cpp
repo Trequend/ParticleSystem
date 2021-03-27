@@ -5,6 +5,7 @@
 bool Scene::registrationIsAvailable = true;
 bool Scene::changeBlocked;
 Scene* Scene::currentScene;
+std::string Scene::currentSceneName;
 std::map<std::string, std::function<Scene* ()>> Scene::sceneConstructors;
 
 void Scene::BlockRegistration()
@@ -44,6 +45,7 @@ void Scene::Load(const std::string& name)
 
 	CloseCurrent();
 	currentScene = it->second();
+	currentSceneName = name;
 	currentScene->Initialize();
 }
 
@@ -55,6 +57,16 @@ Scene& Scene::GetCurrent()
 	}
 
 	return *currentScene;
+}
+
+const std::string& Scene::GetCurrentSceneName()
+{
+	if (currentScene == nullptr)
+	{
+		throw std::runtime_error("No scene");
+	}
+
+	return currentSceneName;
 }
 
 void Scene::CloseCurrent()
