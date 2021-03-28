@@ -153,6 +153,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Shader.cpp" />
     <ClCompile Include="src\Resources.cpp" />
     <ClCompile Include="src\windows\Environment.cpp" />
     <ClCompile Include="src\GLInfo.cpp" />
@@ -174,6 +175,8 @@
     <ClCompile Include="src\windows\WindowsManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\ShaderError.hpp" />
+    <ClInclude Include="src\Shader.hpp" />
     <ClInclude Include="src\Resources.hpp" />
     <ClInclude Include="src\windows\Environment.hpp" />
     <ClInclude Include="src\GLInfo.hpp" />
@@ -477,6 +480,8 @@
     <ClInclude Include="src\windows\WindowsManager.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="assets\shader\color.frag.glsl" />
+    <None Include="assets\shader\color.vert.glsl" />
     <None Include="vendor\glm\glm\detail\func_common.inl" />
     <None Include="vendor\glm\glm\detail\func_common_simd.inl" />
     <None Include="vendor\glm\glm\detail\func_exponential.inl" />

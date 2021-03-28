@@ -72,6 +72,9 @@
     <ClCompile Include="src\Resources.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Shader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="vendor\glm\glm\detail\_features.hpp">
@@ -977,6 +980,12 @@
     <ClInclude Include="src\Resources.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Shader.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ShaderError.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="vendor\glm\glm\detail\func_common.inl">
@@ -1387,6 +1396,8 @@
     <None Include="vendor\glm\glm\gtx\wrap.inl">
       <Filter>Header Files</Filter>
     </None>
+    <None Include="assets\shader\color.vert.glsl" />
+    <None Include="assets\shader\color.frag.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="vendor\glm\copying.txt" />
