@@ -14,8 +14,6 @@
 #include "windows/Environment.hpp"
 #include "scenes/Sandbox.hpp"
 
-WindowsManager windowsManager;
-
 void RegisterScenes()
 {
 	Scene::Register<Sandbox>("Sandbox");
@@ -40,14 +38,6 @@ bool InitGLFW()
 	return true;
 }
 
-void HandleKeyGLFW(GLFWwindow* window, int key, int scancode, int action, int mode)
-{
-	if (key == GLFW_KEY_W && action == GLFW_PRESS)
-	{
-		windowsManager.isOpened = !windowsManager.isOpened;
-	}
-}
-
 GLFWwindow* CreateWindow(int width, int height, const char* title)
 {
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
@@ -60,7 +50,6 @@ GLFWwindow* CreateWindow(int width, int height, const char* title)
 	}
 	
 	glfwMakeContextCurrent(window);
-	glfwSetKeyCallback(window, HandleKeyGLFW);
 	return window;
 }
 
@@ -119,6 +108,13 @@ void ProcessCurrentScene()
 	}
 }
 
+void InitWindowsManager(WindowsManager& windowsManager)
+{
+	windowsManager.AddWindow(new SceneSelector());
+	windowsManager.AddWindow(new SceneVariables());
+	windowsManager.AddWindow(new Environment());
+}
+
 int main()
 {
 	RegisterScenes();
@@ -141,9 +137,8 @@ int main()
 
 	InitImGui(window);
 
-	windowsManager.AddWindow(new SceneSelector());
-	windowsManager.AddWindow(new SceneVariables());
-	windowsManager.AddWindow(new Environment());
+	WindowsManager windowsManager;
+	InitWindowsManager(windowsManager);
 
 	while (!glfwWindowShouldClose(window))
 	{

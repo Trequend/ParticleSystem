@@ -1,7 +1,14 @@
 #include "WindowsManager.hpp"
 
+#include <iostream>
+
 void WindowsManager::Render()
 {
+	if (ImGui::IsKeyPressed('W', false))
+	{
+		isOpened = !isOpened;
+	}
+
 	if (!isOpened)
 	{
 		return;
