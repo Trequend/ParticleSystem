@@ -82,6 +82,11 @@ Shader::~Shader()
 
 void Shader::Add(unsigned int shaderType, const std::string& source)
 {
+	if (linked)
+	{
+		return;
+	}
+
 	if (!IsValidShaderType(shaderType))
 	{
 		throw ShaderError("Unknown shader type");
