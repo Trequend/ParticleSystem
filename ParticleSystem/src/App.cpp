@@ -42,6 +42,7 @@ GLFWwindow* CreateWindow(int width, int height, const char* title)
 {
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+	glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, true);
 	GLFWwindow* window = glfwCreateWindow(width, height, title, nullptr, nullptr);
 	if (!window)
 	{
@@ -51,6 +52,91 @@ GLFWwindow* CreateWindow(int width, int height, const char* title)
 	
 	glfwMakeContextCurrent(window);
 	return window;
+}
+
+std::string DebugSourceToStringGL(unsigned int source)
+{
+	switch (source)
+	{
+	case GL_DEBUG_SOURCE_API:
+		return "OpenGL";
+	case GL_DEBUG_SOURCE_APPLICATION:
+		return "Application";
+	case GL_DEBUG_SOURCE_OTHER:
+		return "Other";
+	case GL_DEBUG_SOURCE_SHADER_COMPILER:
+		return "Shader compiler";
+	case GL_DEBUG_SOURCE_THIRD_PARTY:
+		return "3rd party";
+	case GL_DEBUG_SOURCE_WINDOW_SYSTEM:
+		return "Windows system";
+	default:
+		return "Unknown";
+	}
+}
+
+std::string DebugTypeToStringGL(unsigned int type)
+{
+	switch (type)
+	{
+	case GL_DEBUG_TYPE_DEPRECATED_BEHAVIOR:
+		return "Deprecated";
+	case GL_DEBUG_TYPE_ERROR:
+		return "Error";
+	case GL_DEBUG_TYPE_MARKER:
+		return "Marker";
+	case GL_DEBUG_TYPE_OTHER:
+		return "Other";
+	case GL_DEBUG_TYPE_PERFORMANCE:
+		return "Performance";
+	case GL_DEBUG_TYPE_POP_GROUP:
+		return "Pop group";
+	case GL_DEBUG_TYPE_PORTABILITY:
+		return "Portability";
+	case GL_DEBUG_TYPE_PUSH_GROUP:
+		return "Push group";
+	case GL_DEBUG_TYPE_UNDEFINED_BEHAVIOR:
+		return "Undefined";
+	default:
+		return "Unknown";
+	}
+}
+
+std::string DebugSeverityToStringGL(unsigned int severity)
+{
+	switch (severity)
+	{
+	case GL_DEBUG_SEVERITY_HIGH:
+		return "HIGH";
+	case GL_DEBUG_SEVERITY_LOW:
+		return "LOW";
+	case GL_DEBUG_SEVERITY_MEDIUM:
+		return "MEDIUM";
+	case GL_DEBUG_SEVERITY_NOTIFICATION:
+		return "NOTIFICATION";
+	default:
+		return "UNKNOWN";
+	}
+}
+
+void GLAPIENTRY DebugMessageCallbackGL(
+	unsigned int source,
+	unsigned int type,
+	unsigned int id,
+	unsigned int severity,
+	int length,
+	const char* message,
+	const void* userParam
+)
+{
+	std::ostream& stream = type == GL_DEBUG_TYPE_ERROR ? std::cerr : std::cout;
+
+	stream << "[" << DebugSeverityToStringGL(severity) << "]";
+	stream << "(id:" << id << ") ";
+	stream << DebugSourceToStringGL(source) << " -> ";
+	stream << DebugTypeToStringGL(type) << ": ";
+	stream << message;
+
 }
 
 bool InitGLEW()
@@ -63,6 +149,8 @@ bool InitGLEW()
 		return false;
 	}
 
+	glDebugMessageCallback(DebugMessageCallbackGL, nullptr);
+	glDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DONT_CARE, 0, nullptr, true);
 	return true;
 }
 
