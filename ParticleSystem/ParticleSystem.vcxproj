@@ -153,6 +153,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\BufferElement.cpp" />
+    <ClCompile Include="src\BufferLayout.cpp" />
     <ClCompile Include="src\IndexBuffer.cpp" />
     <ClCompile Include="src\Camera.cpp" />
     <ClCompile Include="src\Shader.cpp" />
@@ -175,8 +177,11 @@
     <ClCompile Include="vendor\imgui\imgui_tables.cpp" />
     <ClCompile Include="vendor\imgui\imgui_widgets.cpp" />
     <ClCompile Include="src\windows\WindowsManager.cpp" />
+    <ClCompile Include="src\VertexBuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\BufferElement.h" />
+    <ClInclude Include="src\BufferLayout.h" />
     <ClInclude Include="src\IndexBuffer.hpp" />
     <ClInclude Include="src\CameraException.hpp" />
     <ClInclude Include="src\Camera.hpp" />
@@ -483,6 +488,7 @@
     <ClInclude Include="vendor\imgui\imstb_truetype.h" />
     <ClInclude Include="src\windows\Window.hpp" />
     <ClInclude Include="src\windows\WindowsManager.hpp" />
+    <ClInclude Include="src\VertexBuffer.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\shader\color.frag.glsl" />

@@ -1,0 +1,19 @@
+#pragma once
+
+#include <vector>
+#include "BufferElement.h"
+
+class BufferLayout
+{
+private:
+	size_t stride = 0;
+	std::vector<BufferElement> elements;
+
+	void ComputeStrideAndOffsets();
+public:
+	BufferLayout(std::vector<BufferElement> elements);
+
+	const std::vector<BufferElement>& GetElements();
+	size_t GetStride();
+};
+
