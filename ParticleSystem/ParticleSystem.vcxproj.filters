@@ -1019,7 +1019,7 @@
     <ClInclude Include="src\renderer\BufferElement.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\renderer\BufferLayout.h">
+    <ClInclude Include="src\renderer\BufferLayout.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\renderer\VertexArray.hpp">

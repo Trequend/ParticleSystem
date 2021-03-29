@@ -1,4 +1,4 @@
-#include "BufferLayout.h"
+#include "BufferLayout.hpp"
 
 #include <stdexcept>
 

@@ -182,7 +182,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\renderer\BufferElement.hpp" />
-    <ClInclude Include="src\renderer\BufferLayout.h" />
+    <ClInclude Include="src\renderer\BufferLayout.hpp" />
     <ClInclude Include="src\renderer\IndexBuffer.hpp" />
     <ClInclude Include="src\renderer\CameraException.hpp" />
     <ClInclude Include="src\renderer\Camera.hpp" />
