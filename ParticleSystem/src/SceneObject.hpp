@@ -4,7 +4,7 @@
 
 #include "Transform.hpp"
 
-class SceneObject abstract
+class SceneObject
 {
 public:
 	Transform transform;
