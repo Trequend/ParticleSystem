@@ -3,7 +3,7 @@
 #include <stdexcept>
 #include <GL/glew.h>
 
-#include "BufferElement.h"
+#include "BufferElement.hpp"
 #include "BufferLayout.h"
 
 size_t VertexArray::BufferElementTypeToOpenGLType(BufferElement::Type type)

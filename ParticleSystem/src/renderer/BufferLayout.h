@@ -2,7 +2,7 @@
 
 #include <vector>
 
-#include "BufferElement.h"
+#include "BufferElement.hpp"
 
 class BufferLayout
 {

@@ -1016,7 +1016,7 @@
     <ClInclude Include="src\renderer\VertexBuffer.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\renderer\BufferElement.h">
+    <ClInclude Include="src\renderer\BufferElement.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\renderer\BufferLayout.h">
