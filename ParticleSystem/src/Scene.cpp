@@ -89,8 +89,20 @@ bool Scene::CurrentExists()
 	return currentScene != nullptr;
 }
 
+void Scene::SetCamera(const Camera& camera)
+{
+	this->camera = camera;
+}
+
+const Camera& Scene::GetCamera()
+{
+	return camera;
+}
+
 void Scene::Update()
 {
+	camera.Update();
+
 	for (objectIndex = 0; !isDestroyed && objectIndex < objects.size(); objectIndex++)
 	{
 		objects[objectIndex]->Update();
@@ -109,14 +121,13 @@ void Scene::UI()
 {
 	OnUI();
 
+	camera.UI();
+
 	const ImVec2 marginSize(1, 5);
 	for (objectIndex = 0; !isDestroyed && objectIndex < objects.size(); objectIndex++)
 	{
+		ImGui::InvisibleButton("##margin", marginSize);
 		objects[objectIndex]->UI();
-		if (objectIndex != objects.size() - 1)
-		{
-			ImGui::InvisibleButton("##margin", marginSize);
-		}
 	}
 }
 

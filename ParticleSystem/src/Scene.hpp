@@ -6,8 +6,10 @@
 #include <functional>
 #include <memory>
 #include <stdexcept>
+#include <GLFW/glfw3.h>
 
 #include "SceneObject.hpp"
+#include "Camera.hpp"
 
 class Scene
 {
@@ -18,10 +20,11 @@ private:
 	static std::string currentSceneName;
 	static std::map<std::string, std::function<Scene* ()>> sceneConstructors;
 
-	bool isDestroyed;
+	Camera camera;
+	bool isDestroyed = false;
 	std::vector<std::shared_ptr<SceneObject>> objects;
 
-	size_t objectIndex;
+	size_t objectIndex = 0;
 public:
 	template<class T>
 	static void Register(const std::string& name);
@@ -33,6 +36,9 @@ public:
 	static const std::string& GetCurrentSceneName();
 	static void CloseCurrent();
 	static bool CurrentExists();
+
+	void SetCamera(const Camera& camera);
+	const Camera& GetCamera();
 
 	virtual void Initialize() = 0;
 	void Update();
