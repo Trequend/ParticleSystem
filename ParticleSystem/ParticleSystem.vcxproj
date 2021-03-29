@@ -153,6 +153,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\IndexBuffer.cpp" />
     <ClCompile Include="src\Camera.cpp" />
     <ClCompile Include="src\Shader.cpp" />
     <ClCompile Include="src\Resources.cpp" />
@@ -176,6 +177,7 @@
     <ClCompile Include="src\windows\WindowsManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\IndexBuffer.hpp" />
     <ClInclude Include="src\CameraException.hpp" />
     <ClInclude Include="src\Camera.hpp" />
     <ClInclude Include="src\ShaderError.hpp" />
