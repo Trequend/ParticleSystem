@@ -153,21 +153,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\BufferElement.cpp" />
-    <ClCompile Include="src\BufferLayout.cpp" />
-    <ClCompile Include="src\IndexBuffer.cpp" />
-    <ClCompile Include="src\Camera.cpp" />
-    <ClCompile Include="src\Shader.cpp" />
-    <ClCompile Include="src\Resources.cpp" />
+    <ClCompile Include="src\renderer\BufferElement.cpp" />
+    <ClCompile Include="src\renderer\BufferLayout.cpp" />
+    <ClCompile Include="src\renderer\IndexBuffer.cpp" />
+    <ClCompile Include="src\renderer\Camera.cpp" />
+    <ClCompile Include="src\renderer\Shader.cpp" />
+    <ClCompile Include="src\utils\Resources.cpp" />
     <ClCompile Include="src\windows\Environment.cpp" />
-    <ClCompile Include="src\GLInfo.cpp" />
+    <ClCompile Include="src\utils\GLInfo.cpp" />
     <ClCompile Include="src\windows\SceneVariables.cpp" />
     <ClCompile Include="src\scenes\Sandbox.cpp" />
     <ClCompile Include="src\windows\SceneSelector.cpp" />
-    <ClCompile Include="src\SceneObject.cpp" />
-    <ClCompile Include="src\Scene.cpp" />
+    <ClCompile Include="src\objects\SceneObject.cpp" />
+    <ClCompile Include="src\scenes\Scene.cpp" />
     <ClCompile Include="src\App.cpp" />
-    <ClCompile Include="src\Transform.cpp" />
+    <ClCompile Include="src\math\Transform.cpp" />
     <ClCompile Include="vendor\glm\glm\detail\glm.cpp" />
     <ClCompile Include="vendor\imgui\imgui.cpp" />
     <ClCompile Include="vendor\imgui\imgui_demo.cpp" />
@@ -177,26 +177,26 @@
     <ClCompile Include="vendor\imgui\imgui_tables.cpp" />
     <ClCompile Include="vendor\imgui\imgui_widgets.cpp" />
     <ClCompile Include="src\windows\WindowsManager.cpp" />
-    <ClCompile Include="src\VertexBuffer.cpp" />
-    <ClCompile Include="src\VertexArray.cpp" />
+    <ClCompile Include="src\renderer\VertexBuffer.cpp" />
+    <ClCompile Include="src\renderer\VertexArray.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\BufferElement.h" />
-    <ClInclude Include="src\BufferLayout.h" />
-    <ClInclude Include="src\IndexBuffer.hpp" />
-    <ClInclude Include="src\CameraException.hpp" />
-    <ClInclude Include="src\Camera.hpp" />
-    <ClInclude Include="src\ShaderError.hpp" />
-    <ClInclude Include="src\Shader.hpp" />
-    <ClInclude Include="src\Resources.hpp" />
+    <ClInclude Include="src\renderer\BufferElement.h" />
+    <ClInclude Include="src\renderer\BufferLayout.h" />
+    <ClInclude Include="src\renderer\IndexBuffer.hpp" />
+    <ClInclude Include="src\renderer\CameraException.hpp" />
+    <ClInclude Include="src\renderer\Camera.hpp" />
+    <ClInclude Include="src\renderer\ShaderError.hpp" />
+    <ClInclude Include="src\renderer\Shader.hpp" />
+    <ClInclude Include="src\utils\Resources.hpp" />
     <ClInclude Include="src\windows\Environment.hpp" />
-    <ClInclude Include="src\GLInfo.hpp" />
+    <ClInclude Include="src\utils\GLInfo.hpp" />
     <ClInclude Include="src\windows\SceneVariables.hpp" />
     <ClInclude Include="src\scenes\Sandbox.hpp" />
     <ClInclude Include="src\windows\SceneSelector.hpp" />
-    <ClInclude Include="src\SceneObject.hpp" />
-    <ClInclude Include="src\Scene.hpp" />
-    <ClInclude Include="src\Transform.hpp" />
+    <ClInclude Include="src\objects\SceneObject.hpp" />
+    <ClInclude Include="src\scenes\Scene.hpp" />
+    <ClInclude Include="src\math\Transform.hpp" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\compute_common.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\compute_vector_relational.hpp" />
@@ -489,8 +489,8 @@
     <ClInclude Include="vendor\imgui\imstb_truetype.h" />
     <ClInclude Include="src\windows\Window.hpp" />
     <ClInclude Include="src\windows\WindowsManager.hpp" />
-    <ClInclude Include="src\VertexBuffer.hpp" />
-    <ClInclude Include="src\VertexArray.hpp" />
+    <ClInclude Include="src\renderer\VertexBuffer.hpp" />
+    <ClInclude Include="src\renderer\VertexArray.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\shader\color.frag.glsl" />

@@ -1,10 +1,9 @@
 #include "SceneVariables.hpp"
 
 #include <climits>
-
 #include <imgui.h>
 
-#include "../Scene.hpp"
+#include "../scenes/Scene.hpp"
 
 void SceneVariables::Render()
 {

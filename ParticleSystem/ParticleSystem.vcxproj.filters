@@ -42,13 +42,13 @@
     <ClCompile Include="vendor\imgui\imgui_widgets.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Scene.cpp">
+    <ClCompile Include="src\scenes\Scene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Transform.cpp">
+    <ClCompile Include="src\math\Transform.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\SceneObject.cpp">
+    <ClCompile Include="src\objects\SceneObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\windows\SceneSelector.cpp">
@@ -63,34 +63,34 @@
     <ClCompile Include="src\windows\SceneVariables.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GLInfo.cpp">
+    <ClCompile Include="src\utils\GLInfo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\windows\Environment.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Resources.cpp">
+    <ClCompile Include="src\utils\Resources.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Shader.cpp">
+    <ClCompile Include="src\renderer\Shader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Camera.cpp">
+    <ClCompile Include="src\renderer\Camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\IndexBuffer.cpp">
+    <ClCompile Include="src\renderer\IndexBuffer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\VertexBuffer.cpp">
+    <ClCompile Include="src\renderer\VertexBuffer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\BufferElement.cpp">
+    <ClCompile Include="src\renderer\BufferElement.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\BufferLayout.cpp">
+    <ClCompile Include="src\renderer\BufferLayout.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\VertexArray.cpp">
+    <ClCompile Include="src\renderer\VertexArray.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -965,13 +965,13 @@
     <ClInclude Include="vendor\imgui\imstb_truetype.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Scene.hpp">
+    <ClInclude Include="src\scenes\Scene.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Transform.hpp">
+    <ClInclude Include="src\math\Transform.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\SceneObject.hpp">
+    <ClInclude Include="src\objects\SceneObject.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\windows\SceneSelector.hpp">
@@ -989,40 +989,40 @@
     <ClInclude Include="src\windows\SceneVariables.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GLInfo.hpp">
+    <ClInclude Include="src\utils\GLInfo.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\windows\Environment.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Resources.hpp">
+    <ClInclude Include="src\utils\Resources.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Shader.hpp">
+    <ClInclude Include="src\renderer\Shader.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\ShaderError.hpp">
+    <ClInclude Include="src\renderer\ShaderError.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Camera.hpp">
+    <ClInclude Include="src\renderer\Camera.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\CameraException.hpp">
+    <ClInclude Include="src\renderer\CameraException.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\IndexBuffer.hpp">
+    <ClInclude Include="src\renderer\IndexBuffer.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\VertexBuffer.hpp">
+    <ClInclude Include="src\renderer\VertexBuffer.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\BufferElement.h">
+    <ClInclude Include="src\renderer\BufferElement.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\BufferLayout.h">
+    <ClInclude Include="src\renderer\BufferLayout.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\VertexArray.hpp">
+    <ClInclude Include="src\renderer\VertexArray.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

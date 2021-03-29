@@ -8,8 +8,8 @@
 #include <stdexcept>
 #include <GLFW/glfw3.h>
 
-#include "SceneObject.hpp"
-#include "Camera.hpp"
+#include "../objects/SceneObject.hpp"
+#include "../renderer/Camera.hpp"
 
 class Scene
 {

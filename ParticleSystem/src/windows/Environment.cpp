@@ -2,7 +2,7 @@
 
 #include <imgui.h>
 
-#include "../GLInfo.hpp"
+#include "../utils/GLInfo.hpp"
 
 void Environment::Render()
 {

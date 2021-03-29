@@ -3,8 +3,6 @@
 #include <imgui.h>
 #include <glm/gtc/matrix_transform.hpp>
 
-#include "CameraException.hpp"
-
 void Camera::UpdateProjectionMatrix()
 {
 	float width = float(screenWidth);

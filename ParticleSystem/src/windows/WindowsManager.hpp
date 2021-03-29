@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Window.hpp"
-
-#include <imgui.h>
 #include <vector>
 #include <memory>
+#include <imgui.h>
+
+#include "Window.hpp"
 
 class WindowsManager : public Window
 {

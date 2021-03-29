@@ -1,7 +1,7 @@
 #include "Shader.hpp"
 
-#include <GL/glew.h>
 #include <iostream>
+#include <GL/glew.h>
 
 #include "ShaderError.hpp"
 

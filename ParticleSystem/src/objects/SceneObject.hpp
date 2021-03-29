@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include "Transform.hpp"
+#include "../math/Transform.hpp"
 
 class SceneObject
 {

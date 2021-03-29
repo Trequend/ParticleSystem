@@ -3,7 +3,7 @@
 #include <vector>
 #include <string>
 
-#include "../Scene.hpp"
+#include "../scenes/Scene.hpp"
 #include "Window.hpp"
 
 class SceneSelector : public Window
