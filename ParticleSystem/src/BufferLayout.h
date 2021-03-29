@@ -13,7 +13,7 @@ private:
 public:
 	BufferLayout(std::vector<BufferElement> elements);
 
-	const std::vector<BufferElement>& GetElements();
-	size_t GetStride();
+	const std::vector<BufferElement>& GetElements() const;
+	size_t GetStride() const;
 };
 

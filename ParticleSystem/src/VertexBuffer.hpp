@@ -12,8 +12,8 @@ public:
 	VertexBuffer(size_t size, const BufferLayout& layout);
 	~VertexBuffer();
 
-	void Bind();
-	void Unbind();
+	void Bind() const;
+	void Unbind() const;
 
-	const BufferLayout& GetLayout();
+	const BufferLayout& GetLayout() const;
 };

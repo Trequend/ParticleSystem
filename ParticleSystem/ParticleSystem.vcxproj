@@ -178,6 +178,7 @@
     <ClCompile Include="vendor\imgui\imgui_widgets.cpp" />
     <ClCompile Include="src\windows\WindowsManager.cpp" />
     <ClCompile Include="src\VertexBuffer.cpp" />
+    <ClCompile Include="src\VertexArray.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\BufferElement.h" />
@@ -489,6 +490,7 @@
     <ClInclude Include="src\windows\Window.hpp" />
     <ClInclude Include="src\windows\WindowsManager.hpp" />
     <ClInclude Include="src\VertexBuffer.hpp" />
+    <ClInclude Include="src\VertexArray.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\shader\color.frag.glsl" />

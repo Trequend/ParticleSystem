@@ -25,12 +25,12 @@ BufferLayout::BufferLayout(std::vector<BufferElement> elements)
 	ComputeStrideAndOffsets();
 }
 
-const std::vector<BufferElement>& BufferLayout::GetElements()
+const std::vector<BufferElement>& BufferLayout::GetElements() const
 {
 	return elements;
 }
 
-size_t BufferLayout::GetStride()
+size_t BufferLayout::GetStride() const
 {
 	return stride;
 }

@@ -9,8 +9,8 @@ public:
 	IndexBuffer(size_t* indices, size_t size);
 	~IndexBuffer();
 
-	void Bind();
-	void Unbind();
+	void Bind() const;
+	void Unbind() const;
 
-	size_t GetSize();
+	size_t GetSize() const;
 };
