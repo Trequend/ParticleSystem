@@ -1,6 +1,7 @@
 #include "Scene.hpp"
 
 #include <stdexcept>
+#include <imgui.h>
 
 bool Scene::registrationIsAvailable = true;
 bool Scene::changeBlocked;
@@ -108,9 +109,14 @@ void Scene::UI()
 {
 	OnUI();
 
+	const ImVec2 marginSize(1, 5);
 	for (objectIndex = 0; !isDestroyed && objectIndex < objects.size(); objectIndex++)
 	{
-		objects[objectIndex]->Update();
+		objects[objectIndex]->UI();
+		if (objectIndex != objects.size() - 1)
+		{
+			ImGui::InvisibleButton("##margin", marginSize);
+		}
 	}
 }
 
