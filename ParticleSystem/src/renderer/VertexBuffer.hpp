@@ -15,5 +15,7 @@ public:
 	void Bind() const;
 	void Unbind() const;
 
+	void SetData(void* data, size_t size);
+
 	const BufferLayout& GetLayout() const;
 };

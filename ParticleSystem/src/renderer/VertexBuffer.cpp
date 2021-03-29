@@ -35,6 +35,13 @@ void VertexBuffer::Unbind() const
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
+void VertexBuffer::SetData(void* data, size_t size)
+{
+	Bind();
+	glBufferData(GL_ARRAY_BUFFER, size, data, GL_DYNAMIC_DRAW);
+	Unbind();
+}
+
 const BufferLayout& VertexBuffer::GetLayout() const
 {
 	return layout;

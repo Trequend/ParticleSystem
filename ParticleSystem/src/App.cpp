@@ -11,6 +11,8 @@
 #include "windows/SceneVariables.hpp"
 #include "windows/Environment.hpp"
 #include "scenes/Sandbox.hpp"
+#include "renderer/Renderer.hpp"
+#include "renderer/RendererError.hpp"
 
 void RegisterScenes()
 {
@@ -172,7 +174,7 @@ void RenderImGuiFrame()
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 }
 
-void ProcessCurrentScene()
+void ProcessCurrentScene(Renderer& renderer)
 {
 	if (!Scene::CurrentExists())
 	{
@@ -187,11 +189,9 @@ void ProcessCurrentScene()
 		return;
 	}
 
+	renderer.BeginScene();
 	scene.Render();
-	if (scene.IsDestroyed())
-	{
-		return;
-	}
+	renderer.EndScene();
 }
 
 void InitWindowsManager(WindowsManager& windowsManager)
@@ -226,12 +226,24 @@ int main()
 	WindowsManager windowsManager;
 	InitWindowsManager(windowsManager);
 
+	Renderer* renderer = nullptr;
+	try
+	{
+		renderer = new Renderer(5000);
+	}
+	catch (RendererError error)
+	{
+		std::cerr << error.what() << std::endl;
+		std::cerr << "Cannot create renderer" << std::endl;
+		glfwTerminate();
+		return EXIT_FAILURE;
+	}
+
 	while (!glfwWindowShouldClose(window))
 	{
 		glfwPollEvents();
-		glClear(GL_COLOR_BUFFER_BIT);
 
-		ProcessCurrentScene();
+		ProcessCurrentScene(*renderer);
 
 		ImGuiNewFrame();
 		windowsManager.Render();
@@ -240,6 +252,7 @@ int main()
 		glfwSwapBuffers(window);
 	}
 
+	delete renderer;
 	Scene::CloseCurrent();
 	glfwTerminate();
 	return EXIT_SUCCESS;

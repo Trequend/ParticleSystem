@@ -93,6 +93,9 @@
     <ClCompile Include="src\renderer\VertexArray.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\renderer\Renderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="vendor\glm\glm\detail\_features.hpp">
@@ -1025,6 +1028,12 @@
     <ClInclude Include="src\renderer\VertexArray.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\renderer\Renderer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\renderer\RendererError.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="vendor\glm\glm\detail\func_common.inl">
@@ -1437,6 +1446,8 @@
     </None>
     <None Include="assets\shader\color.vert.glsl" />
     <None Include="assets\shader\color.frag.glsl" />
+    <None Include="assets\shaders\Color.vert.glsl" />
+    <None Include="assets\shaders\Color.frag.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="vendor\glm\copying.txt" />
