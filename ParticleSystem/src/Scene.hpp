@@ -25,6 +25,9 @@ private:
 	std::vector<std::shared_ptr<SceneObject>> objects;
 
 	size_t objectIndex = 0;
+	int selectedObject = 0;
+
+	static bool SceneObjectGetter(void* data, int index, const char** outText);
 public:
 	template<class T>
 	static void Register(const std::string& name);

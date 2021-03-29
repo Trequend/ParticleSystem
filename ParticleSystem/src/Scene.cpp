@@ -9,6 +9,18 @@ Scene* Scene::currentScene;
 std::string Scene::currentSceneName;
 std::map<std::string, std::function<Scene* ()>> Scene::sceneConstructors;
 
+bool Scene::SceneObjectGetter(void* data, int index, const char** outText)
+{
+	Scene* scene = static_cast<Scene*>(data);
+	if (index < 0 || index > scene->objects.size())
+	{
+		return false;
+	}
+
+	*outText = index == 0 ? "Camera" : scene->objects[index - 1]->name.c_str();
+	return true;
+}
+
 void Scene::BlockRegistration()
 {
 	registrationIsAvailable = false;
@@ -120,14 +132,15 @@ void Scene::Render()
 void Scene::UI()
 {
 	OnUI();
-
-	camera.UI();
-
-	const ImVec2 marginSize(1, 5);
-	for (objectIndex = 0; !isDestroyed && objectIndex < objects.size(); objectIndex++)
+	ImGui::Combo("Objects", &selectedObject, SceneObjectGetter, this, objects.size() + 1);
+	
+	if (selectedObject == 0)
 	{
-		ImGui::InvisibleButton("##margin", marginSize);
-		objects[objectIndex]->UI();
+		camera.UI();
+	}
+	else
+	{
+		objects[selectedObject - 1]->UI();
 	}
 }
 
