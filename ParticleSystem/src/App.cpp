@@ -21,14 +21,14 @@ void RegisterScenes()
 	Scene::BlockRegistration();
 }
 
-void HandleErrorGLFW(int errorCode, const char* description)
+void ErrorCallbackGLFW(int errorCode, const char* description)
 {
 	std::cerr << "GLFW (" << errorCode << "): " << description << std::endl;
 }
 
 bool InitGLFW()
 {
-	glfwSetErrorCallback(HandleErrorGLFW);
+	glfwSetErrorCallback(ErrorCallbackGLFW);
 	if (!glfwInit())
 	{
 		std::cerr << "(GLFW) failed to initialize" << std::endl;
