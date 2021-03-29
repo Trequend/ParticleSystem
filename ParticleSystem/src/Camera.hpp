@@ -53,30 +53,30 @@ public:
 
 	void SetProjection(Camera::Projection projectionType, size_t screenWidth, size_t screenHeight);
 	void SetProjection(Camera::Projection projectionType);
-	Projection GetProjectionType();
+	Projection GetProjectionType() const;
 
 	void SetScreenSize(size_t screenWidth, size_t screenHeight);
-	glm::ivec2 GetScreenSize();
+	glm::ivec2 GetScreenSize() const;
 
 	// Orthographic
 	void SetOrhographicProperties(size_t size);
-	size_t GetSize();
+	size_t GetSize() const;
 
 	// Perspective
 	void SetPerspectiveProperties(float fov, float near, float far);
-	float GetFOV();
-	float GetNear();
-	float GetFar();
+	float GetFOV() const;
+	float GetNear() const;
+	float GetFar() const;
 
 	void SetTranslation(const glm::vec3& translation);
-	const glm::vec3& GetTranslation();
+	const glm::vec3& GetTranslation() const;
 
 	void SetRotation(const glm::vec3& rotation);
-	const glm::vec3& GetRotation();
+	const glm::vec3& GetRotation() const;
 
-	const glm::mat4& ProjectionMatrix();
-	const glm::mat4& ViewMatrix();
-	const glm::mat4& ViewProjectionMatrix();
+	const glm::mat4& ProjectionMatrix() const;
+	const glm::mat4& ViewMatrix() const;
+	const glm::mat4& ViewProjectionMatrix() const;
 
 private:
 	Projection projectionType;

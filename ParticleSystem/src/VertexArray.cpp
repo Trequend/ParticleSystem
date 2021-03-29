@@ -39,12 +39,12 @@ VertexArray::~VertexArray()
 	glDeleteVertexArrays(1, &vao);
 }
 
-void VertexArray::Bind()
+void VertexArray::Bind() const
 {
 	glBindVertexArray(vao);
 }
 
-void VertexArray::Unbind()
+void VertexArray::Unbind() const
 {
 	glBindVertexArray(0);
 }

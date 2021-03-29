@@ -41,7 +41,7 @@ public:
 	static bool CurrentExists();
 
 	void SetCamera(const Camera& camera);
-	const Camera& GetCamera();
+	Camera& GetCamera();
 
 	virtual void Initialize() = 0;
 	void Update();

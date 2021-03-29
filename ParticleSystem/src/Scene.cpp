@@ -106,7 +106,7 @@ void Scene::SetCamera(const Camera& camera)
 	this->camera = camera;
 }
 
-const Camera& Scene::GetCamera()
+Camera& Scene::GetCamera()
 {
 	return camera;
 }

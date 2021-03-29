@@ -122,7 +122,7 @@ void Camera::SetProjection(Camera::Projection projectionType)
 	}
 }
 
-Camera::Projection Camera::GetProjectionType()
+Camera::Projection Camera::GetProjectionType() const
 {
 	return projectionType;
 }
@@ -135,7 +135,7 @@ void Camera::SetScreenSize(size_t screenWidth, size_t screenHeight)
 	}
 }
 
-glm::ivec2 Camera::GetScreenSize()
+glm::ivec2 Camera::GetScreenSize() const
 {
 	return glm::ivec2(screenWidth, screenHeight);
 }
@@ -155,7 +155,7 @@ void Camera::SetOrhographicProperties(size_t size)
 	}
 }
 
-size_t Camera::GetSize()
+size_t Camera::GetSize() const
 {
 	return size;
 }
@@ -187,17 +187,17 @@ void Camera::SetPerspectiveProperties(float fov, float near, float far)
 	}
 }
 
-float Camera::GetFOV()
+float Camera::GetFOV() const
 {
 	return fov;
 }
 
-float Camera::GetNear()
+float Camera::GetNear() const
 {
 	return near;
 }
 
-float Camera::GetFar()
+float Camera::GetFar() const
 {
 	return far;
 }
@@ -209,7 +209,7 @@ void Camera::SetTranslation(const glm::vec3& translation)
 	UpdateViewProjectionMatrix();
 }
 
-const glm::vec3& Camera::GetTranslation()
+const glm::vec3& Camera::GetTranslation() const
 {
 	return translation;
 }
@@ -221,22 +221,22 @@ void Camera::SetRotation(const glm::vec3& rotation)
 	UpdateViewProjectionMatrix();
 }
 
-const glm::vec3& Camera::GetRotation()
+const glm::vec3& Camera::GetRotation() const
 {
 	return rotation;
 }
 
-const glm::mat4& Camera::ProjectionMatrix()
+const glm::mat4& Camera::ProjectionMatrix() const
 {
 	return projectionMatrix;
 }
 
-const glm::mat4& Camera::ViewMatrix()
+const glm::mat4& Camera::ViewMatrix() const
 {
 	return viewMatrix;
 }
 
-const glm::mat4& Camera::ViewProjectionMatrix()
+const glm::mat4& Camera::ViewProjectionMatrix() const
 {
 	return viewProjectionMatrix;
 }

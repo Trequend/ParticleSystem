@@ -30,22 +30,22 @@ void Transform::SetScale(glm::vec3 scale)
 	UpdateMatrix();
 }
 
-glm::vec3 Transform::GetTranslation()
+const glm::vec3& Transform::GetTranslation() const
 {
 	return translation;
 }
 
-glm::vec3 Transform::GetRotation()
+const glm::vec3& Transform::GetRotation() const
 {
 	return rotation;
 }
 
-glm::vec3 Transform::GetScale()
+const glm::vec3& Transform::GetScale() const
 {
 	return scale;
 }
 
-glm::mat4 Transform::GetMatrix()
+const glm::mat4& Transform::GetMatrix() const
 {
 	return matrix;
 }

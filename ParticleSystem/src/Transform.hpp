@@ -22,8 +22,8 @@ public:
 	void SetTranslation(glm::vec3 translation);
 	void SetRotation(glm::vec3 rotation);
 	void SetScale(glm::vec3 scale);
-	glm::vec3 GetTranslation();
-	glm::vec3 GetRotation();
-	glm::vec3 GetScale();
-	glm::mat4 GetMatrix();
+	const glm::vec3& GetTranslation() const;
+	const glm::vec3& GetRotation() const;
+	const glm::vec3& GetScale() const;
+	const glm::mat4& GetMatrix() const;
 };
