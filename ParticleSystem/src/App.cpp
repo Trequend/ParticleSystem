@@ -1,5 +1,6 @@
 #include <cstdlib>
 #include <iostream>
+#include <algorithm>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <imgui_impl_opengl3.h>
@@ -174,26 +175,6 @@ void RenderImGuiFrame()
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 }
 
-void ProcessCurrentScene(Renderer& renderer)
-{
-	if (!Scene::CurrentExists())
-	{
-		return;
-	}
-
-	Scene& scene = Scene::GetCurrent();
-	
-	scene.Update();
-	if (scene.IsDestroyed())
-	{
-		return;
-	}
-
-	renderer.BeginScene();
-	scene.Render();
-	renderer.EndScene();
-}
-
 void InitWindowsManager(WindowsManager& windowsManager)
 {
 	windowsManager.AddWindow(new SceneSelector());
@@ -239,17 +220,45 @@ int main()
 		return EXIT_FAILURE;
 	}
 
+	unsigned int fps = 60;
+	double lastFrameTime = 0.0;
+	double deltaTime = 0.0;
+	double step = 1.0 / fps;
 	while (!glfwWindowShouldClose(window))
 	{
+		double currentFrameTime = glfwGetTime();
+		glClear(GL_COLOR_BUFFER_BIT);
 		glfwPollEvents();
 
-		ProcessCurrentScene(*renderer);
+		if (Scene::CurrentExists())
+		{
+			Scene& scene = Scene::GetCurrent();
+			deltaTime += std::min(0.1, currentFrameTime - lastFrameTime);
+
+			while (deltaTime > step)
+			{
+				deltaTime -= step;
+				scene.Update(float(step));
+				if (scene.IsDestroyed())
+				{
+					break;
+				}
+			}
+
+			if (!scene.IsDestroyed())
+			{
+				renderer->BeginScene();
+				scene.Render();
+				renderer->EndScene();
+			}
+		}
 
 		ImGuiNewFrame();
 		windowsManager.Render();
 		RenderImGuiFrame();
 
 		glfwSwapBuffers(window);
+		lastFrameTime = currentFrameTime;
 	}
 
 	delete renderer;

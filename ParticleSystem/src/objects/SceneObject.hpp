@@ -13,7 +13,7 @@ public:
 	SceneObject(const std::string& name, Transform transform) : name(name), transform(transform) { }
 	SceneObject(const std::string& name) : name(name) { }
 
-	virtual void Update();
+	virtual void Update(float deltaTime);
 	virtual void UI();
 	virtual void Render();
 };

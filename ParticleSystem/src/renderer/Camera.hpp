@@ -48,7 +48,7 @@ public:
 
 	glm::vec3 clearColor;
 
-	virtual void Update();
+	virtual void Update(float deltaTime);
 	virtual void UI();
 
 	void SetProjection(Camera::Projection projectionType, size_t screenWidth, size_t screenHeight);

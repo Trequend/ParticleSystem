@@ -3,7 +3,7 @@
 #include <imgui.h>
 #include <glm/glm.hpp>
 
-void SceneObject::Update() { }
+void SceneObject::Update(float deltaTime) { }
 
 void SceneObject::UI()
 {

@@ -10,9 +10,9 @@ EmitParticleSystem::EmitParticleSystem(
 	ParticleProperties particleProperties
 ) : SceneObject(name), particleProperties(particleProperties), particlesPerFrame(particlesPerFrame) { }
 
-void EmitParticleSystem::Update()
+void EmitParticleSystem::Update(float deltaTime)
 {
-	Compute();
+	Compute(deltaTime);
 	Emit(particlesPerFrame);
 }
 

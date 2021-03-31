@@ -8,7 +8,7 @@
 class EmitParticleSystem : public SceneObject
 {
 protected:
-	virtual void Compute() = 0;
+	virtual void Compute(float deltaTime) = 0;
 	virtual void Emit(unsigned int count) = 0;
 public:
 	struct ParticleProperties
@@ -39,6 +39,6 @@ public:
 		ParticleProperties particleProperties
 	);
 
-	void Update() final;
+	void Update(float deltaTime) final;
 	void UI();
 };

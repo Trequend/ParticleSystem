@@ -111,13 +111,13 @@ Camera& Scene::GetCamera()
 	return camera;
 }
 
-void Scene::Update()
+void Scene::Update(float deltaTime)
 {
-	camera.Update();
+	camera.Update(deltaTime);
 
 	for (objectIndex = 0; !isDestroyed && objectIndex < objects.size(); objectIndex++)
 	{
-		objects[objectIndex]->Update();
+		objects[objectIndex]->Update(deltaTime);
 	}
 }
 

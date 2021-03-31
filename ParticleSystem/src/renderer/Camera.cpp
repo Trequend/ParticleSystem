@@ -36,7 +36,7 @@ void Camera::UpdateViewProjectionMatrix()
 	viewProjectionMatrix = projectionMatrix * viewMatrix;
 }
 
-void Camera::Update() { }
+void Camera::Update(float deltaTime) { }
 
 void Camera::UI()
 {

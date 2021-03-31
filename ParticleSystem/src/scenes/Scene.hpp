@@ -44,7 +44,7 @@ public:
 	Camera& GetCamera();
 
 	virtual void Initialize() = 0;
-	void Update();
+	void Update(float deltaTime);
 	void Render();
 	void UI();
 	virtual void OnUI();
