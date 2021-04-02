@@ -1,6 +1,7 @@
 #include "Renderer.hpp"
 
 #include <vector>
+#include <chrono>
 #include <stdexcept>
 #include <GL/glew.h>
 
@@ -154,6 +155,8 @@ void Renderer::BeginScene()
 	}
 
 	isScene = true;
+	statistics.drawCalls = 0;
+	statistics.renderTime = std::chrono::milliseconds(0);
 	if (!Scene::CurrentExists())
 	{
 		return;
@@ -201,9 +204,16 @@ void Renderer::Flush()
 		return;
 	}
 
+	auto start = std::chrono::high_resolution_clock::now();
+
 	shader.Use();
 	shader.SetUniform("ViewProjectionMatrix", viewProjectionMatrix);
 	data->Draw();
+
+	auto stop = std::chrono::high_resolution_clock::now();
+	auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
+	statistics.drawCalls++;
+	statistics.renderTime += duration;
 }
 
 void Renderer::DrawQuadInInstance(const glm::mat4 modelMatrix, const glm::vec4& color)
@@ -254,6 +264,16 @@ void Renderer::Setup(size_t maxQuadCount)
 	}
 
 	renderer->SetupInstance(maxQuadCount);
+}
+
+const Renderer::Statistics& Renderer::GetStatistics()
+{
+	if (renderer == nullptr)
+	{
+		throw RendererError("No renderer");
+	}
+
+	return renderer->statistics;
 }
 
 void Renderer::DrawQuad(const glm::mat4 modelMatrix, const glm::vec4& color)

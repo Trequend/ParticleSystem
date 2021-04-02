@@ -3,6 +3,8 @@
 #include <stdexcept>
 #include <imgui.h>
 
+#include "../windows/Performance.hpp"
+
 bool Scene::registrationIsAvailable = true;
 bool Scene::changeBlocked;
 Scene* Scene::currentScene;
@@ -60,6 +62,7 @@ void Scene::Load(const std::string& name)
 	currentScene = it->second();
 	currentSceneName = name;
 	currentScene->Initialize();
+
 }
 
 Scene& Scene::GetCurrent()
@@ -94,6 +97,7 @@ void Scene::CloseCurrent()
 	changeBlocked = false;
 	delete currentScene;
 	currentScene = nullptr;
+	Performance::Data::Reset();
 }
 
 bool Scene::CurrentExists()

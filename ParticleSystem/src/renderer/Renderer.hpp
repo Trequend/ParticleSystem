@@ -1,6 +1,7 @@
 #pragma once
 
 #include <memory>
+#include <chrono>
 #include <glm/glm.hpp>
 
 #include "VertexBuffer.hpp"
@@ -44,10 +45,17 @@ private:
 		void Reset();
 	};
 
+	struct Statistics
+	{
+		unsigned int drawCalls = 0;
+		std::chrono::milliseconds renderTime;
+	};
+
 	Renderer::Data* data = nullptr;
 	bool isScene = false;
 	Shader shader;
 	glm::mat4 viewProjectionMatrix;
+	Statistics statistics;
 
 	void Flush();
 
@@ -66,6 +74,8 @@ public:
 	void SetupInstance(size_t maxQuadCount);
 
 	static void Setup(size_t maxQuadCount);
+
+	static const Statistics& GetStatistics();
 
 	static void DrawQuad(const glm::mat4 modelMatrix, const glm::vec4& color);
 };

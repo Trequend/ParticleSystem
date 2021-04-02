@@ -1,4 +1,5 @@
 #include <cstdlib>
+#include <chrono>
 #include <iostream>
 #include <algorithm>
 #include <GL/glew.h>
@@ -11,6 +12,7 @@
 #include "windows/SceneSelector.hpp"
 #include "windows/SceneVariables.hpp"
 #include "windows/Environment.hpp"
+#include "windows/Performance.hpp"
 #include "scenes/Sandbox.hpp"
 #include "renderer/Renderer.hpp"
 #include "renderer/RendererError.hpp"
@@ -180,6 +182,7 @@ void InitWindowsManager(WindowsManager& windowsManager)
 	windowsManager.AddWindow(new SceneSelector());
 	windowsManager.AddWindow(new SceneVariables());
 	windowsManager.AddWindow(new Environment());
+	windowsManager.AddWindow(new Performance());
 }
 
 int main()
@@ -220,6 +223,8 @@ int main()
 		return EXIT_FAILURE;
 	}
 
+	Performance::Data* performanceData = new Performance::Data();
+
 	unsigned int fps = 60;
 	double lastFrameTime = 0.0;
 	double deltaTime = 0.0;
@@ -230,11 +235,17 @@ int main()
 		glClear(GL_COLOR_BUFFER_BIT);
 		glfwPollEvents();
 
+		std::chrono::milliseconds updateTime;
+		std::chrono::milliseconds renderTimeCPU;
+		std::chrono::milliseconds renderTimeGPU;
+		bool dataCollected = false;
+
 		if (Scene::CurrentExists())
 		{
 			Scene& scene = Scene::GetCurrent();
 			deltaTime += std::min(0.1, currentFrameTime - lastFrameTime);
 
+			auto start = std::chrono::high_resolution_clock::now();
 			while (deltaTime > step)
 			{
 				deltaTime -= step;
@@ -245,17 +256,40 @@ int main()
 				}
 			}
 
+			auto stop = std::chrono::high_resolution_clock::now();
+			updateTime = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
+
 			if (!scene.IsDestroyed())
 			{
+				start = std::chrono::high_resolution_clock::now();
 				renderer->BeginScene();
 				scene.Render();
 				renderer->EndScene();
+				auto stop = std::chrono::high_resolution_clock::now();
+				auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
+				renderTimeGPU = renderer->GetStatistics().renderTime;
+				renderTimeCPU = duration - renderTimeGPU;
+
+				if (!scene.IsDestroyed())
+				{
+					dataCollected = true;
+				}
 			}
 		}
 
 		ImGuiNewFrame();
 		windowsManager.Render();
 		RenderImGuiFrame();
+
+		if (Scene::CurrentExists() && dataCollected)
+		{
+			performanceData->Add(
+				updateTime,
+				renderTimeCPU,
+				renderTimeGPU,
+				1.0 / (currentFrameTime - lastFrameTime)
+			);
+		}
 
 		glfwSwapBuffers(window);
 		lastFrameTime = currentFrameTime;
