@@ -29,6 +29,7 @@ void Camera::UpdateViewMatrix()
 	viewMatrix = glm::rotate(viewMatrix, rotation[0], glm::vec3(1.0f, 0.0f, 0.0f));
 	viewMatrix = glm::rotate(viewMatrix, rotation[1], glm::vec3(0.0f, 1.0f, 0.0f));
 	viewMatrix = glm::rotate(viewMatrix, rotation[2], glm::vec3(0.0f, 0.0f, 1.0f));
+	viewMatrix = glm::inverse(viewMatrix);
 }
 
 void Camera::UpdateViewProjectionMatrix()
