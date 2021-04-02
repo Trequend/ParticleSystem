@@ -1,6 +1,7 @@
 #include "ParticleSystemCPU.hpp"
 
 #include <algorithm>
+#include <chrono>
 #include <cmath>
 #include <iostream>
 #include <imgui.h>
@@ -96,8 +97,8 @@ ParticleSystemCPU::ParticleSystemCPU(
 ) : EmitParticleSystem(name, particlesPerFrame, particleProperties)
 {
 	SetPoolSize(poolSize);
-	std::random_device randomDevice;
-	randomGenerator = std::mt19937_64(randomDevice());
+	auto seed = std::chrono::steady_clock::now().time_since_epoch().count();
+	randomGenerator = std::mt19937_64(seed);
 	distribution = std::uniform_real_distribution<float>(0.0f, 1.0f);
 }
 
