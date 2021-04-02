@@ -16,6 +16,7 @@ void SceneVariables::Render()
 	ImGui::Begin(name.c_str(), &isOpened);
 	if (!Scene::CurrentExists())
 	{
+		ImGui::Text("No current scene");
 		ImGui::End();
 		return;
 	}
