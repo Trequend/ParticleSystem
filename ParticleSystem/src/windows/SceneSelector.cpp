@@ -5,7 +5,7 @@
 bool SceneSelector::VectorGetter(void* data, int index, const char** outText)
 {
 	auto& vector = *static_cast<std::vector<std::string>*>(data);
-	if (index < 0 || index > vector.size())
+	if (index < 0 || index > (int)vector.size())
 	{
 		return false;
 	}

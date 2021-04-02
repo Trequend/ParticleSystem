@@ -12,7 +12,7 @@ void SceneVariables::Render()
 		return;
 	}
 
-	ImGui::SetNextWindowSizeConstraints(ImVec2(250, 150), ImVec2(INT_MAX, INT_MAX));
+	ImGui::SetNextWindowSizeConstraints(ImVec2(250.0f, 150.0f), ImVec2(FLT_MAX, FLT_MAX));
 	ImGui::Begin(name.c_str(), &isOpened);
 	if (!Scene::CurrentExists())
 	{

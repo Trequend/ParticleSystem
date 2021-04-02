@@ -14,7 +14,7 @@ std::map<std::string, std::function<Scene* ()>> Scene::sceneConstructors;
 bool Scene::SceneObjectGetter(void* data, int index, const char** outText)
 {
 	Scene* scene = static_cast<Scene*>(data);
-	if (index < 0 || index > scene->objects.size())
+	if (index < 0 || index > (int)scene->objects.size())
 	{
 		return false;
 	}
