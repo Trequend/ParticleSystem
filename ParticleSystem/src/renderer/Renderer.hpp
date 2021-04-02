@@ -59,8 +59,6 @@ private:
 
 	void Flush();
 
-	void DrawQuadInInstance(const glm::mat4 modelMatrix, const glm::vec4& color);
-
 	static Renderer* renderer;
 public:
 	static const int quadCountLimit = 25000;
@@ -70,8 +68,6 @@ public:
 
 	void BeginScene();
 	void EndScene();
-
-	void SetupInstance(size_t maxQuadCount);
 
 	static void Setup(size_t maxQuadCount);
 

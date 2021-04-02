@@ -137,8 +137,8 @@ Renderer::Renderer(size_t maxQuadCount)
 		throw RendererError("Failed to create shader: " + std::string(error.what()));
 	}
 
-	SetupInstance(maxQuadCount);
 	renderer = this;
+	Setup(maxQuadCount);
 }
 
 Renderer::~Renderer()
@@ -216,46 +216,6 @@ void Renderer::Flush()
 	statistics.renderTime += duration;
 }
 
-void Renderer::DrawQuadInInstance(const glm::mat4 modelMatrix, const glm::vec4& color)
-{
-	if (!isScene)
-	{
-		return;
-	}
-
-	if (data->IsFull())
-	{
-		Flush();
-	}
-
-	for (size_t i = 0; i < 4; i++)
-	{
-		data->SetPosition(modelMatrix);
-		data->SetColor(color);
-		data->NextVertex();
-	}
-}
-
-void Renderer::SetupInstance(size_t maxQuadCount)
-{
-	if (maxQuadCount > quadCountLimit)
-	{
-		throw RendererError("The limit of the number of vertices is exceeded");
-	}
-
-	if (data != nullptr)
-	{
-		if (isScene)
-		{
-			Flush();
-		}
-
-		delete data;
-	}
-
-	data = new Renderer::Data(maxQuadCount);
-}
-
 void Renderer::Setup(size_t maxQuadCount)
 {
 	if (renderer == nullptr)
@@ -263,7 +223,22 @@ void Renderer::Setup(size_t maxQuadCount)
 		throw RendererError("No renderer");
 	}
 
-	renderer->SetupInstance(maxQuadCount);
+	if (maxQuadCount > quadCountLimit)
+	{
+		throw RendererError("The limit of the number of vertices is exceeded");
+	}
+
+	if (renderer->data != nullptr)
+	{
+		if (renderer->isScene)
+		{
+			renderer->Flush();
+		}
+
+		delete renderer->data;
+	}
+
+	renderer->data = new Renderer::Data(maxQuadCount);
 }
 
 const Renderer::Statistics& Renderer::GetStatistics()
@@ -283,5 +258,20 @@ void Renderer::DrawQuad(const glm::mat4 modelMatrix, const glm::vec4& color)
 		throw RendererError("No renderer");
 	}
 
-	renderer->DrawQuadInInstance(modelMatrix, color);
+	if (!renderer->isScene)
+	{
+		return;
+	}
+
+	if (renderer->data->IsFull())
+	{
+		renderer->Flush();
+	}
+
+	for (size_t i = 0; i < 4; i++)
+	{
+		renderer->data->SetPosition(modelMatrix);
+		renderer->data->SetColor(color);
+		renderer->data->NextVertex();
+	}
 }
