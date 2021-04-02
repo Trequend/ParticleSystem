@@ -153,6 +153,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\objects\ParticleSystemCPU.cpp" />
     <ClCompile Include="src\objects\EmitParticleSystem.cpp" />
     <ClCompile Include="src\renderer\Renderer.cpp" />
     <ClCompile Include="src\renderer\BufferElement.cpp" />
@@ -183,6 +184,7 @@
     <ClCompile Include="src\renderer\VertexArray.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\objects\ParticleSystemCPU.hpp" />
     <ClInclude Include="src\objects\ParticleSystemException.hpp" />
     <ClInclude Include="src\objects\EmitParticleSystem.hpp" />
     <ClInclude Include="src\renderer\RendererError.hpp" />

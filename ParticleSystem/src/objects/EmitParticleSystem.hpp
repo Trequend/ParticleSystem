@@ -25,9 +25,9 @@ public:
 		glm::vec3 angularVelocityVariation;
 		glm::vec4 colorBegin;
 		glm::vec4 colorEnd;
-		glm::vec2 sizeBegin;
-		glm::vec2 sizeEnd;
-		glm::vec2 sizeVariation;
+		float sizeBegin;
+		float sizeEnd;
+		float sizeVariation;
 	};
 
 	ParticleProperties particleProperties;
