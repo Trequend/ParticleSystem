@@ -6,9 +6,9 @@ void Transform::UpdateMatrix()
 {
 	matrix = glm::mat4(1.0f);
 	matrix = glm::translate(matrix, translation);
-	matrix = glm::rotate(matrix, rotation[0], glm::vec3(1.0f, 0.0f, 0.0f));
-	matrix = glm::rotate(matrix, rotation[1], glm::vec3(0.0f, 1.0f, 0.0f));
-	matrix = glm::rotate(matrix, rotation[2], glm::vec3(0.0f, 0.0f, 1.0f));
+	matrix = glm::rotate(matrix, glm::radians(rotation[0]), glm::vec3(1.0f, 0.0f, 0.0f));
+	matrix = glm::rotate(matrix, glm::radians(rotation[1]), glm::vec3(0.0f, 1.0f, 0.0f));
+	matrix = glm::rotate(matrix, glm::radians(rotation[2]), glm::vec3(0.0f, 0.0f, 1.0f));
 	matrix = glm::scale(matrix, scale);
 }
 

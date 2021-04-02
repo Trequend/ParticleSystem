@@ -159,17 +159,17 @@ void ParticleSystemCPU::Render()
 		glm::mat4 model = glm::translate(transform.GetMatrix(), particle->position);
 		if (particle->rotation.x != 0.0f)
 		{
-			model = glm::rotate(model, particle->rotation.x, xAxis);
+			model = glm::rotate(model, glm::radians(particle->rotation.x), xAxis);
 		}
 
 		if (particle->rotation.y != 0.0f)
 		{
-			model = glm::rotate(model, particle->rotation.y, yAxis);
+			model = glm::rotate(model, glm::radians(particle->rotation.y), yAxis);
 		}
 		
 		if (particle->rotation.z != 0.0f)
 		{
-			model = glm::rotate(model, particle->rotation.z, zAxis);
+			model = glm::rotate(model, glm::radians(particle->rotation.z), zAxis);
 		}
 
 		float k = particle->lifeRemaining / particle->lifespan;

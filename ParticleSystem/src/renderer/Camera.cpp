@@ -26,9 +26,9 @@ void Camera::UpdateViewMatrix()
 {
 	viewMatrix = glm::mat4(1.0f);
 	viewMatrix = glm::translate(viewMatrix, translation);
-	viewMatrix = glm::rotate(viewMatrix, rotation[0], glm::vec3(1.0f, 0.0f, 0.0f));
-	viewMatrix = glm::rotate(viewMatrix, rotation[1], glm::vec3(0.0f, 1.0f, 0.0f));
-	viewMatrix = glm::rotate(viewMatrix, rotation[2], glm::vec3(0.0f, 0.0f, 1.0f));
+	viewMatrix = glm::rotate(viewMatrix, glm::radians(rotation[0]), glm::vec3(1.0f, 0.0f, 0.0f));
+	viewMatrix = glm::rotate(viewMatrix, glm::radians(rotation[1]), glm::vec3(0.0f, 1.0f, 0.0f));
+	viewMatrix = glm::rotate(viewMatrix, glm::radians(rotation[2]), glm::vec3(0.0f, 0.0f, 1.0f));
 	viewMatrix = glm::inverse(viewMatrix);
 }
 
