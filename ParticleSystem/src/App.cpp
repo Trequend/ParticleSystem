@@ -31,7 +31,9 @@ void ErrorCallbackGLFW(int errorCode, const char* description)
 
 bool InitGLFW()
 {
+#if _DEBUG
 	glfwSetErrorCallback(ErrorCallbackGLFW);
+#endif
 	if (!glfwInit())
 	{
 		std::cerr << "(GLFW) failed to initialize" << std::endl;
@@ -152,8 +154,10 @@ bool InitGLEW()
 		return false;
 	}
 
+#ifdef _DEBUG
 	glDebugMessageCallback(DebugMessageCallbackGL, nullptr);
 	glDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DONT_CARE, 0, nullptr, true);
+#endif
 	return true;
 }
 
