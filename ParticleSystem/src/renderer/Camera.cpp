@@ -55,6 +55,8 @@ void Camera::UI()
 		UpdateViewProjectionMatrix();
 	}
 
+	ImGui::ColorEdit3("Clear color", &clearColor[0]);
+
 	bool orthographic = projectionType == Camera::Projection::Orthographic;
 	if (ImGui::Checkbox("Orthographic projection", &orthographic))
 	{
