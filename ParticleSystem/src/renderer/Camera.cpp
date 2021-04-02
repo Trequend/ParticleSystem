@@ -43,13 +43,13 @@ void Camera::UI()
 {
 	ImGui::Text("Camera");
 
-	if (ImGui::InputFloat3("Translation", &translation[0]))
+	if (ImGui::DragFloat3("Translation", &translation[0]))
 	{
 		UpdateViewMatrix();
 		UpdateViewProjectionMatrix();
 	}
 
-	if (ImGui::InputFloat3("Rotation", &rotation[0]))
+	if (ImGui::DragFloat3("Rotation", &rotation[0]))
 	{
 		UpdateViewMatrix();
 		UpdateViewProjectionMatrix();
