@@ -153,6 +153,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\scenes\cpu\HardTestCPU.cpp" />
+    <ClCompile Include="src\scenes\cpu\NormalTestCPU.cpp" />
+    <ClCompile Include="src\scenes\cpu\EasyTestCPU.cpp" />
     <ClCompile Include="src\windows\Performance.cpp" />
     <ClCompile Include="src\objects\ParticleSystemCPU.cpp" />
     <ClCompile Include="src\objects\EmitParticleSystem.cpp" />
@@ -185,6 +188,9 @@
     <ClCompile Include="src\renderer\VertexArray.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\scenes\cpu\HardTestCPU.hpp" />
+    <ClInclude Include="src\scenes\cpu\NormalTestCPU.hpp" />
+    <ClInclude Include="src\scenes\cpu\EasyTestCPU.hpp" />
     <ClInclude Include="src\windows\Performance.hpp" />
     <ClInclude Include="src\objects\ParticleSystemCPU.hpp" />
     <ClInclude Include="src\objects\ParticleSystemException.hpp" />

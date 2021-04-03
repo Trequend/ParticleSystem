@@ -13,13 +13,19 @@
 #include "windows/SceneVariables.hpp"
 #include "windows/Environment.hpp"
 #include "windows/Performance.hpp"
-#include "scenes/Sandbox.hpp"
 #include "renderer/Renderer.hpp"
 #include "renderer/RendererError.hpp"
+#include "scenes/Sandbox.hpp"
+#include "scenes/cpu/EasyTestCPU.hpp"
+#include "scenes/cpu/NormalTestCPU.hpp"
+#include "scenes/cpu/HardTestCPU.hpp"
 
 void RegisterScenes()
 {
 	Scene::Register<Sandbox>("Sandbox");
+	Scene::Register<EasyTestCPU>("Easy test (CPU)");
+	Scene::Register<NormalTestCPU>("Normal test (CPU)");
+	Scene::Register<HardTestCPU>("Hard test (CPU)");
 
 	Scene::BlockRegistration();
 }
