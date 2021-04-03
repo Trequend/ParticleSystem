@@ -39,6 +39,11 @@ void Performance::Data::Add(
 	double fps
 )
 {
+	if (stopped)
+	{
+		return;
+	}
+
 	iteration++;
 
 	long long valueUpdateTime = updateTime.count();
@@ -70,12 +75,32 @@ void Performance::Data::Add(
 	totalRenderTimeGPU += valueRenderTimeGPU;
 }
 
+void Performance::Data::Resume()
+{
+	ThrowIfNoData();
+	data->stopped = false;
+}
+
+void Performance::Data::Stop()
+{
+	ThrowIfNoData();
+	data->stopped = true;
+}
+
+bool Performance::Data::IsStopped()
+{
+	ThrowIfNoData();
+	return data->stopped;
+}
+
 void Performance::Data::Reset()
 {
 	if (data == nullptr)
 	{
 		return;
 	}
+
+	data->stopped = false;
 
 	data->iteration = 1;
 
@@ -316,5 +341,22 @@ void Performance::Render()
 	{
 		Performance::Data::Reset();
 	}
+
+	ImGui::SameLine();
+	if (Performance::Data::IsStopped())
+	{
+		if (ImGui::Button("Resume"))
+		{
+			Performance::Data::Resume();
+		}
+	}
+	else
+	{
+		if (ImGui::Button("Stop"))
+		{
+			Performance::Data::Stop();
+		}
+	}
+
 	ImGui::End();
 }

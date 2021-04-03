@@ -11,6 +11,8 @@ public:
 	class Data
 	{
 	private:
+		bool stopped = false;
+		
 		long long iteration = 1;
 
 		double fps = 0.0;
@@ -50,6 +52,11 @@ public:
 			const std::chrono::milliseconds& renderTimeGPU,
 			double fps
 		);
+
+		static void Resume();
+		static void Stop();
+
+		static bool IsStopped();
 
 		static void Reset();
 
