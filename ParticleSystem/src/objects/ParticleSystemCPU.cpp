@@ -100,7 +100,7 @@ void ParticleSystemCPU::Emit(unsigned int count)
 		freeParticle->sizeBegin = particleProperties.sizeBegin + sizeVariation;
 		freeParticle->sizeEnd = particleProperties.sizeEnd + sizeVariation;
 		freeParticle->size = freeParticle->sizeBegin;
-		freeParticle->previousSize = freeParticle->previousSize;
+		freeParticle->previousSize = freeParticle->size;
 
 		freeParticle = freeParticle->right;
 	}
