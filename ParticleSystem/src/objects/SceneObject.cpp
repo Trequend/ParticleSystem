@@ -26,4 +26,4 @@ void SceneObject::UI()
 	}
 }
 
-void SceneObject::Render() { }
+void SceneObject::Render(float deltaTime, float step) { }

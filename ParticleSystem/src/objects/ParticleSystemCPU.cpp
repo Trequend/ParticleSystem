@@ -39,11 +39,22 @@ void ParticleSystemCPU::Compute(float deltaTime)
 		}
 		else
 		{
+			particle->previousPosition = particle->position;
 			particle->position += particle->velocity * deltaTime;
+
+			particle->previousRotation = particle->rotation;
 			particle->rotation += particle->angularVelocity * deltaTime;
 			particle->rotation.x -= std::floor(particle->rotation.x / 360.0f) * 360.0f;
 			particle->rotation.y -= std::floor(particle->rotation.y / 360.0f) * 360.0f;
 			particle->rotation.z -= std::floor(particle->rotation.z / 360.0f) * 360.0f;
+
+			float k = particle->lifeRemaining / particle->lifespan;
+
+			particle->previousSize = particle->size;
+			particle->size = glm::mix(particle->sizeEnd, particle->sizeBegin, k);
+
+			particle->previousColor = particle->color;
+			particle->color = glm::mix(particle->colorEnd, particle->colorBegin, k);
 		}
 	}
 }
@@ -62,11 +73,13 @@ void ParticleSystemCPU::Emit(unsigned int count)
 		freeParticle->position.x += particleProperties.positionVariation.x * (Random() - 0.5f);
 		freeParticle->position.y += particleProperties.positionVariation.y * (Random() - 0.5f);
 		freeParticle->position.z += particleProperties.positionVariation.z * (Random() - 0.5f);
+		freeParticle->previousPosition = freeParticle->position;
 
 		freeParticle->rotation = particleProperties.rotation;
 		freeParticle->rotation.x += particleProperties.rotationVariation.x * (Random() - 0.5f);
 		freeParticle->rotation.y += particleProperties.rotationVariation.y * (Random() - 0.5f);
 		freeParticle->rotation.z += particleProperties.rotationVariation.z * (Random() - 0.5f);
+		freeParticle->previousRotation = freeParticle->rotation;
 
 		freeParticle->velocity = particleProperties.velocity;
 		freeParticle->velocity.x += particleProperties.velocityVariation.x * (Random() - 0.5f);
@@ -78,12 +91,16 @@ void ParticleSystemCPU::Emit(unsigned int count)
 		freeParticle->angularVelocity.y += particleProperties.angularVelocityVariation.y * (Random() - 0.5f);
 		freeParticle->angularVelocity.z += particleProperties.angularVelocityVariation.z * (Random() - 0.5f);
 
+		freeParticle->color = particleProperties.colorBegin;
 		freeParticle->colorBegin = particleProperties.colorBegin;
 		freeParticle->colorEnd = particleProperties.colorEnd;
+		freeParticle->previousColor = freeParticle->color;
 
 		float sizeVariation = particleProperties.sizeVariation * (Random() - 0.5f);
 		freeParticle->sizeBegin = particleProperties.sizeBegin + sizeVariation;
 		freeParticle->sizeEnd = particleProperties.sizeEnd + sizeVariation;
+		freeParticle->size = freeParticle->sizeBegin;
+		freeParticle->previousSize = freeParticle->previousSize;
 
 		freeParticle = freeParticle->right;
 	}
@@ -148,39 +165,40 @@ void ParticleSystemCPU::UI()
 	ImGui::Text("Free: %d", poolSize - activeCount);
 }
 
-void ParticleSystemCPU::Render()
+void ParticleSystemCPU::Render(float deltaTime, float step)
 {
 	struct Particle* particle = firstParticle;
 	
 	const glm::vec3 xAxis(1.0f, 0.0f, 0.0f);
 	const glm::vec3 yAxis(0.0f, 1.0f, 0.0f);
 	const glm::vec3 zAxis(0.0f, 0.0f, 1.0f);
+
+	const float k = deltaTime / step;
+
 	for (size_t i = 0; i < activeCount; i++, particle = particle->right)
 	{
-		glm::mat4 model = glm::translate(transform.GetMatrix(), particle->position);
-		if (particle->rotation.x != 0.0f)
+		glm::vec3 position = glm::mix(particle->previousPosition, particle->position, k);
+		glm::vec3 rotation = glm::mix(particle->previousRotation, particle->rotation, k);
+		glm::vec4 color = glm::mix(particle->previousColor, particle->color, k);
+		float size = glm::mix(particle->previousSize, particle->size, k);
+
+		glm::mat4 model = glm::translate(transform.GetMatrix(), position);
+		if (rotation.x != 0.0f)
 		{
-			model = glm::rotate(model, glm::radians(particle->rotation.x), xAxis);
+			model = glm::rotate(model, glm::radians(rotation.x), xAxis);
 		}
 
-		if (particle->rotation.y != 0.0f)
+		if (rotation.y != 0.0f)
 		{
-			model = glm::rotate(model, glm::radians(particle->rotation.y), yAxis);
+			model = glm::rotate(model, glm::radians(rotation.y), yAxis);
 		}
 		
-		if (particle->rotation.z != 0.0f)
+		if (rotation.z != 0.0f)
 		{
-			model = glm::rotate(model, glm::radians(particle->rotation.z), zAxis);
+			model = glm::rotate(model, glm::radians(rotation.z), zAxis);
 		}
 
-		float k = particle->lifeRemaining / particle->lifespan;
-		float size = glm::mix(particle->sizeEnd, particle->sizeBegin, k);
-		if (size != 1.0f)
-		{
-			model = glm::scale(model, glm::vec3(size, size, 1.0f));
-		}
-
-		glm::vec4 color = glm::mix(particle->colorEnd, particle->colorBegin, k);
+		model = glm::scale(model, glm::vec3(size, size, 0.0f));
 		Renderer::DrawQuad(model, color);
 	}
 }

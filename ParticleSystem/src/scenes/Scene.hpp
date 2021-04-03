@@ -45,7 +45,7 @@ public:
 
 	virtual void Initialize() = 0;
 	void Update(float deltaTime);
-	void Render();
+	void Render(float deltaTime, float step);
 	void UI();
 	virtual void OnUI();
 	virtual void OnDestroy();

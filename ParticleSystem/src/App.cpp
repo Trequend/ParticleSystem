@@ -252,7 +252,7 @@ int main()
 			deltaTime += std::min(0.1, currentFrameTime - lastFrameTime);
 
 			auto start = std::chrono::high_resolution_clock::now();
-			while (deltaTime > step)
+			while (deltaTime >= step)
 			{
 				deltaTime -= step;
 				scene.Update(float(step));
@@ -269,7 +269,7 @@ int main()
 			{
 				start = std::chrono::high_resolution_clock::now();
 				renderer->BeginScene();
-				scene.Render();
+				scene.Render(float(deltaTime), float(step));
 				renderer->EndScene();
 				auto stop = std::chrono::high_resolution_clock::now();
 				auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);

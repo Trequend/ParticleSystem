@@ -14,11 +14,17 @@ private:
 		float lifespan;
 		float lifeRemaining;
 		glm::vec3 position;
+		glm::vec3 previousPosition;
 		glm::vec3 velocity;
 		glm::vec3 rotation;
+		glm::vec3 previousRotation;
 		glm::vec3 angularVelocity;
+		glm::vec4 color;
+		glm::vec4 previousColor;
 		glm::vec4 colorBegin;
 		glm::vec4 colorEnd;
+		float size;
+		float previousSize;
 		float sizeBegin;
 		float sizeEnd;
 
@@ -49,5 +55,5 @@ public:
 	void SetPoolSize(unsigned int size);
 
 	void UI();
-	void Render();
+	void Render(float deltaTime, float step);
 };

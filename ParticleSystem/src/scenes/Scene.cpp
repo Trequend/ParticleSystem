@@ -125,11 +125,11 @@ void Scene::Update(float deltaTime)
 	}
 }
 
-void Scene::Render()
+void Scene::Render(float deltaTime, float step)
 {
 	for (objectIndex = 0; !isDestroyed && objectIndex < objects.size(); objectIndex++)
 	{
-		objects[objectIndex]->Render();
+		objects[objectIndex]->Render(deltaTime, step);
 	}
 }
 

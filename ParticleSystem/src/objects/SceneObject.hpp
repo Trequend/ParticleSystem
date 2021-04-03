@@ -15,5 +15,5 @@ public:
 
 	virtual void Update(float deltaTime);
 	virtual void UI();
-	virtual void Render();
+	virtual void Render(float deltaTime, float step);
 };
