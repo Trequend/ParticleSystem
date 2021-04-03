@@ -29,7 +29,7 @@ The goal of this project is to create a system of particles of three types (CPU,
       <th colspan="3">Frame time, ms</th>
       <th colspan="3">Update time (CPU), ms</th>
       <th colspan="3">Render time (CPU), ms</th>
-      <th colspan="3">Render time (CPU), ms</th>
+      <th colspan="3">Render time (GPU), ms</th>
     </tr>
     <tr>
       <th>min</th>
