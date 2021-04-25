@@ -252,7 +252,9 @@ int main()
 		std::chrono::nanoseconds renderTimeGPU;
 		bool dataCollected = false;
 
-		if (Scene::CurrentExists())
+		int width, height;
+		glfwGetWindowSize(window, &width, &height);
+		if (Scene::CurrentExists() && width != 0 && height != 0)
 		{
 			Scene& scene = Scene::GetCurrent();
 			deltaTime += std::min(0.1, currentFrameTime - lastFrameTime);
