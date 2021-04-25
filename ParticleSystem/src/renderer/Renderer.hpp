@@ -48,7 +48,7 @@ private:
 	struct Statistics
 	{
 		unsigned int drawCalls = 0;
-		std::chrono::milliseconds renderTime;
+		std::chrono::nanoseconds renderTime;
 	};
 
 	Renderer::Data* data = nullptr;

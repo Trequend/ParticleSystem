@@ -248,8 +248,8 @@ int main()
 		glfwPollEvents();
 
 		std::chrono::milliseconds updateTime;
-		std::chrono::milliseconds renderTimeCPU;
-		std::chrono::milliseconds renderTimeGPU;
+		std::chrono::nanoseconds renderTimeCPU;
+		std::chrono::nanoseconds renderTimeGPU;
 		bool dataCollected = false;
 
 		if (Scene::CurrentExists())
@@ -278,7 +278,7 @@ int main()
 				scene.Render(float(deltaTime), float(step));
 				renderer->EndScene();
 				auto stop = std::chrono::high_resolution_clock::now();
-				auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
+				auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start);
 				renderTimeGPU = renderer->GetStatistics().renderTime;
 				renderTimeCPU = duration - renderTimeGPU;
 
@@ -297,8 +297,8 @@ int main()
 		{
 			performanceData->Add(
 				updateTime,
-				renderTimeCPU,
-				renderTimeGPU,
+				std::chrono::duration_cast<std::chrono::milliseconds>(renderTimeCPU),
+				std::chrono::duration_cast<std::chrono::milliseconds>(renderTimeGPU),
 				1.0 / (currentFrameTime - lastFrameTime)
 			);
 		}

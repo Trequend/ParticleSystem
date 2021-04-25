@@ -211,7 +211,7 @@ void Renderer::Flush()
 	data->Draw();
 
 	auto stop = std::chrono::high_resolution_clock::now();
-	auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
+	auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start);
 	statistics.drawCalls++;
 	statistics.renderTime += duration;
 }
