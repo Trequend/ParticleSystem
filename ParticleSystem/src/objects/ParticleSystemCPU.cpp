@@ -160,6 +160,21 @@ void ParticleSystemCPU::SetPoolSize(unsigned int size)
 void ParticleSystemCPU::UI()
 {
 	EmitParticleSystem::UI();
+	int changedParticlesPerFrame = particlesPerFrame;
+	ImGui::DragInt("Particles per frame", &changedParticlesPerFrame);
+	if (changedParticlesPerFrame != particlesPerFrame && changedParticlesPerFrame > 0)
+	{
+		particlesPerFrame = changedParticlesPerFrame;
+	}
+
+	int changedPoolSize = poolSize;
+	ImGui::DragInt("Pool size", &changedPoolSize);
+	if (changedPoolSize != poolSize && changedPoolSize > 0)
+	{
+		SetPoolSize(changedPoolSize);
+	}
+
+	ImGui::Text("Particles per frame: %d", particlesPerFrame);
 	ImGui::Text("Pool size: %d", poolSize);
 	ImGui::Text("Active particles: %d", activeCount);
 	ImGui::Text("Free: %d", poolSize - activeCount);
