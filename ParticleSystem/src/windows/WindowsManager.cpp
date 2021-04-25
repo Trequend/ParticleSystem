@@ -2,8 +2,31 @@
 
 #include <iostream>
 
+void WindowsManager::SwitchFullscreen()
+{
+	isFullscreen = !isFullscreen;
+	if (isFullscreen)
+	{
+		glfwGetWindowPos(window, &savedPosition[0], &savedPosition[1]);
+		glfwGetWindowSize(window, &savedSize[0], &savedSize[1]);
+
+		GLFWmonitor* monitor = glfwGetPrimaryMonitor();
+		const GLFWvidmode* mode = glfwGetVideoMode(monitor);
+		glfwSetWindowMonitor(window, monitor, 0, 0, mode->width, mode->height, mode->refreshRate);
+	}
+	else
+	{
+		glfwSetWindowMonitor(window, nullptr, savedPosition[0], savedPosition[1], savedSize[0], savedSize[1], 0);
+	}
+}
+
 void WindowsManager::Render()
 {
+	if (ImGui::IsKeyPressed('F', false))
+	{
+		SwitchFullscreen();
+	}
+
 	if (ImGui::IsKeyPressed('W', false))
 	{
 		isOpened = !isOpened;

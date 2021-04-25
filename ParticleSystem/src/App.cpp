@@ -60,7 +60,7 @@ GLFWwindow* CreateWindow(int width, int height, const char* title)
 		std::cerr << "(GLFW) failed to create window" << std::endl;
 		return nullptr;
 	}
-	
+
 	glfwMakeContextCurrent(window);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -219,7 +219,7 @@ int main()
 
 	InitImGui(window);
 
-	WindowsManager windowsManager;
+	WindowsManager windowsManager(window);
 	InitWindowsManager(windowsManager);
 
 	Renderer* renderer = nullptr;
