@@ -7,5 +7,5 @@ class Environment : public Window
 public:
 	Environment() : Window("Environment", false) { }
 
-	void Render();
+	void Render() override;
 };

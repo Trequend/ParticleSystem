@@ -16,6 +16,6 @@ private:
 public:
 	SceneSelector() : Window("Scene selector") { }
 
-	void Render();
+	void Render() override;
 };
 

@@ -95,5 +95,5 @@ public:
 
 	Performance();
 
-	void Render();
+	void Render() override;
 };

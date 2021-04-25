@@ -5,5 +5,5 @@
 class HardTestCPU : public Scene
 {
 public:
-	void Initialize();
+	void Initialize() override;
 };

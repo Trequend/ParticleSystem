@@ -42,8 +42,8 @@ private:
 
 	float Random();
 protected:
-	void Compute(float deltaTime);
-	void Emit(unsigned int count);
+	void Compute(float deltaTime) override;
+	void Emit(unsigned int count) override;
 public:
 	ParticleSystemCPU(
 		const std::string& name,
@@ -54,6 +54,6 @@ public:
 
 	void SetPoolSize(unsigned int size);
 
-	void UI();
-	void Render(float deltaTime, float step);
+	void UI() override;
+	void Render(float deltaTime, float step) override;
 };

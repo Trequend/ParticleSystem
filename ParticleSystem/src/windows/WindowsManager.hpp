@@ -21,7 +21,7 @@ private:
 public:
 	WindowsManager(GLFWwindow* window) : Window("Windows"), window(window) { }
 
-	void Render();
+	void Render() override;
 	void AddWindow(Window* window);
 };
 

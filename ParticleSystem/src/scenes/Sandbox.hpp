@@ -4,7 +4,7 @@
 
 class Sandbox : public Scene
 {
-	void Initialize();
-	void OnDestroy();
+	void Initialize() override;
+	void OnDestroy() override;
 };
 
