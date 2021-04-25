@@ -49,6 +49,8 @@ Renderer::Data::Data(size_t quadCount)
 	indexBuffer = std::unique_ptr<IndexBuffer>(new IndexBuffer(indices, maxIndexCount));
 	vertexArray.SetIndexBuffer(*indexBuffer);
 	delete[] indices;
+
+	Reset();
 }
 
 Renderer::Data::~Data()
@@ -109,6 +111,7 @@ void Renderer::Data::Draw()
 void Renderer::Data::Reset()
 {
 	quadIndex = 0;
+	vertexIndex = 0;
 	offset = 0;
 }
 
