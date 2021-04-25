@@ -127,6 +127,19 @@ void Shader::Add(unsigned int shaderType, const std::string& source)
 		throw ShaderError("Compilation failed: " + log);
 	}
 
+	switch (shaderType)
+	{
+	case GL_VERTEX_SHADER:
+		vertexShaderAttached = true;
+		break;
+	case GL_GEOMETRY_SHADER:
+		geometryShaderAttached = true;
+		break;
+	case GL_FRAGMENT_SHADER:
+		fragmentShaderAttached = true;
+		break;
+	}
+
 	glAttachShader(program, shader);
 	glDeleteShader(shader);
 }
