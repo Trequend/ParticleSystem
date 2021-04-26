@@ -2,8 +2,8 @@
 The goal of this project is to create a system of particles of three types (CPU, CPU & GPU, GPU) and compare them in terms of performance.
 ## Progress
 :heavy_check_mark: Particle system on CPU\
-:x: Particle system on CPU & GPU\
-:x: Particle system on GPU
+:heavy_check_mark: Particle system on CPU & GPU\
+:construction: Particle system on GPU
 ## Demo
 ![Demo](https://github.com/Trequend/ParticleSystem/blob/media/Demo.gif)
 ## Tests
@@ -103,6 +103,94 @@ The goal of this project is to create a system of particles of three types (CPU,
       <td align="center">&lt 1</td>
       <td align="center">&lt 1</td>
       <td align="center">1</td>
+    </tr>
+  </tbody>
+</table>
+
+#### Particle system on CPU & GPU (five minutes for each test)
+
+<table>
+  <thead>
+    <tr>
+      <th rowspan="2">Test</th>
+      <th colspan="3">FPS</th>
+      <th colspan="3">Frame time, ms</th>
+      <th colspan="3">Update time (CPU), ms</th>
+      <th colspan="3">Render time (CPU), ms</th>
+      <th colspan="3">Render time (GPU), ms</th>
+    </tr>
+    <tr>
+      <th>min</th>
+      <th>avg</th>
+      <th>max</th>
+      <th>min</th>
+      <th>avg</th>
+      <th>max</th>
+      <th>min</th>
+      <th>avg</th>
+      <th>max</th>
+      <th>min</th>
+      <th>avg</th>
+      <th>max</th>
+      <th>min</th>
+      <th>avg</th>
+      <th>max</th>
+    </tr>
+  </thead>
+  <tbody
+    <tr>
+      <td>Easy</td>
+      <td align="center">16</td>
+      <td align="center">60</td>
+      <td align="center">187</td>
+      <td align="center">&lt 1</td>
+      <td align="center">&lt 1</td>
+      <td align="center">&lt 1</td>
+      <td align="center">&lt 1</td>
+      <td align="center">&lt 1</td>
+      <td align="center">&lt 1</td>
+      <td align="center">&lt 1</td>
+      <td align="center">&lt 1</td>
+      <td align="center">&lt 1</td>
+      <td align="center">&lt 1</td>
+      <td align="center">&lt 1</td>
+      <td align="center">&lt 1</td>
+    </tr>
+    <tr>
+      <td>Normal</td>
+      <td align="center">16</td>
+      <td align="center">60</td>
+      <td align="center">113</td>
+      <td align="center">8</td>
+      <td align="center">15</td>
+      <td align="center">63</td>
+      <td align="center">&lt 1</td>
+      <td align="center">1</td>
+      <td align="center">6</td>
+      <td align="center">&lt 1</td>
+      <td align="center">1</td>
+      <td align="center">3</td>
+      <td align="center">1</td>
+      <td align="center">13</td>
+      <td align="center">61</td>
+    </tr>
+    <tr>
+      <td>Hard</td>
+      <td align="center">17</td>
+      <td align="center">42</td>
+      <td align="center">65</td>
+      <td align="center">1</td>
+      <td align="center">23</td>
+      <td align="center">59</td>
+      <td align="center">1</td>
+      <td align="center">14</td>
+      <td align="center">37</td>
+      <td align="center">&lt 1</td>
+      <td align="center">7</td>
+      <td align="center">14</td>
+      <td align="center">&lt 1</td>
+      <td align="center">2</td>
+      <td align="center">28</td>
     </tr>
   </tbody>
 </table>

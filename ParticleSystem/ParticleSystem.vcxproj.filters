@@ -114,6 +114,18 @@
     <ClCompile Include="src\scenes\cpu\HardTestCPU.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\objects\ParticleSystemCPUandGPU.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scenes\cpu_and_gpu\EasyTestCPUandGPU.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scenes\cpu_and_gpu\HardTestCPUandGPU.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scenes\cpu_and_gpu\NormalTestCPUandGPU.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="vendor\glm\glm\detail\_features.hpp">
@@ -1073,6 +1085,21 @@
     <ClInclude Include="src\scenes\cpu\HardTestCPU.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\objects\ParticleSystemCPUandGPU.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\renderer\DrawData.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scenes\cpu_and_gpu\EasyTestCPUandGPU.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scenes\cpu_and_gpu\HardTestCPUandGPU.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scenes\cpu_and_gpu\NormalTestCPUandGPU.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="vendor\glm\glm\detail\func_common.inl">
@@ -1487,6 +1514,8 @@
     <None Include="assets\shader\color.frag.glsl" />
     <None Include="assets\shaders\Color.vert.glsl" />
     <None Include="assets\shaders\Color.frag.glsl" />
+    <None Include="assets\shaders\CPUandGPU.vert.glsl" />
+    <None Include="assets\shaders\CPUandGPU.geom.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="vendor\glm\copying.txt" />

@@ -153,9 +153,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\objects\ParticleSystemCPUandGPU.cpp" />
     <ClCompile Include="src\scenes\cpu\HardTestCPU.cpp" />
     <ClCompile Include="src\scenes\cpu\NormalTestCPU.cpp" />
     <ClCompile Include="src\scenes\cpu\EasyTestCPU.cpp" />
+    <ClCompile Include="src\scenes\cpu_and_gpu\EasyTestCPUandGPU.cpp" />
+    <ClCompile Include="src\scenes\cpu_and_gpu\HardTestCPUandGPU.cpp" />
+    <ClCompile Include="src\scenes\cpu_and_gpu\NormalTestCPUandGPU.cpp" />
     <ClCompile Include="src\windows\Performance.cpp" />
     <ClCompile Include="src\objects\ParticleSystemCPU.cpp" />
     <ClCompile Include="src\objects\EmitParticleSystem.cpp" />
@@ -188,9 +192,14 @@
     <ClCompile Include="src\renderer\VertexArray.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\renderer\DrawData.hpp" />
+    <ClInclude Include="src\objects\ParticleSystemCPUandGPU.hpp" />
     <ClInclude Include="src\scenes\cpu\HardTestCPU.hpp" />
     <ClInclude Include="src\scenes\cpu\NormalTestCPU.hpp" />
     <ClInclude Include="src\scenes\cpu\EasyTestCPU.hpp" />
+    <ClInclude Include="src\scenes\cpu_and_gpu\EasyTestCPUandGPU.hpp" />
+    <ClInclude Include="src\scenes\cpu_and_gpu\HardTestCPUandGPU.hpp" />
+    <ClInclude Include="src\scenes\cpu_and_gpu\NormalTestCPUandGPU.hpp" />
     <ClInclude Include="src\windows\Performance.hpp" />
     <ClInclude Include="src\objects\ParticleSystemCPU.hpp" />
     <ClInclude Include="src\objects\ParticleSystemException.hpp" />
@@ -511,6 +520,8 @@
   <ItemGroup>
     <None Include="assets\shaders\Color.frag.glsl" />
     <None Include="assets\shaders\Color.vert.glsl" />
+    <None Include="assets\shaders\CPUandGPU.geom.glsl" />
+    <None Include="assets\shaders\CPUandGPU.vert.glsl" />
     <None Include="assets\shader\color.frag.glsl" />
     <None Include="assets\shader\color.vert.glsl" />
     <None Include="vendor\glm\glm\detail\func_common.inl" />

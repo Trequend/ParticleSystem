@@ -19,13 +19,21 @@
 #include "scenes/cpu/EasyTestCPU.hpp"
 #include "scenes/cpu/NormalTestCPU.hpp"
 #include "scenes/cpu/HardTestCPU.hpp"
+#include "scenes/cpu_and_gpu/EasyTestCPUandGPU.hpp"
+#include "scenes/cpu_and_gpu/NormalTestCPUandGPU.hpp"
+#include "scenes/cpu_and_gpu/HardTestCPUandGPU.hpp"
 
 void RegisterScenes()
 {
 	Scene::Register<Sandbox>("Sandbox");
+
 	Scene::Register<EasyTestCPU>("Easy test (CPU)");
 	Scene::Register<NormalTestCPU>("Normal test (CPU)");
 	Scene::Register<HardTestCPU>("Hard test (CPU)");
+
+	Scene::Register<EasyTestCPUandGPU>("Easy test (CPU and GPU)");
+	Scene::Register<NormalTestCPUandGPU>("Normal test (CPU and GPU)");
+	Scene::Register<HardTestCPUandGPU>("Hard test (CPU and GPU)");
 
 	Scene::BlockRegistration();
 }

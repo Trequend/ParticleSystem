@@ -8,7 +8,7 @@
 
 class ParticleSystemCPU : public EmitParticleSystem
 {
-private:
+protected:
 	struct Particle
 	{
 		float lifespan;
@@ -32,6 +32,11 @@ private:
 		struct Particle* right;
 	};
 
+	void Compute(float deltaTime) override;
+	void Emit(unsigned int count) override;
+	virtual void RenderParticle(const Particle *particle, float k);
+	virtual void OnRenderEnd();
+private:
 	struct Particle* pool = nullptr;
 	struct Particle* firstParticle = nullptr;
 	struct Particle* freeParticle = nullptr;
@@ -41,9 +46,6 @@ private:
 	std::uniform_real_distribution<float> distribution;
 
 	float Random();
-protected:
-	void Compute(float deltaTime) override;
-	void Emit(unsigned int count) override;
 public:
 	ParticleSystemCPU(
 		const std::string& name,
@@ -55,5 +57,5 @@ public:
 	void SetPoolSize(unsigned int size);
 
 	void UI() override;
-	void Render(float deltaTime, float step) override;
+	void Render(float deltaTime, float step) final;
 };

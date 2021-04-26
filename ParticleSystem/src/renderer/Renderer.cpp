@@ -104,8 +104,6 @@ void Renderer::Data::Draw()
 	vertexArray.Bind();
 	vertexBuffer->SetData(vertices, quadIndex * stride * 4);
 	glDrawElements(GL_TRIANGLES, quadIndex * 6, GL_UNSIGNED_INT, nullptr);
-
-	Reset();
 }
 
 void Renderer::Data::Reset()
@@ -196,27 +194,9 @@ void Renderer::Flush()
 		return;
 	}
 
-	if (!data->CanDraw())
-	{
-		return;
-	}
-
-	if (!Scene::CurrentExists())
-	{
-		data->Reset();
-		return;
-	}
-
-	auto start = std::chrono::high_resolution_clock::now();
-
 	shader.Use();
 	shader.SetUniform("ViewProjectionMatrix", viewProjectionMatrix);
-	data->Draw();
-
-	auto stop = std::chrono::high_resolution_clock::now();
-	auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start);
-	statistics.drawCalls++;
-	statistics.renderTime += duration;
+	Renderer::Draw(data);
 }
 
 void Renderer::Setup(size_t maxQuadCount)
@@ -277,4 +257,29 @@ void Renderer::DrawQuad(const glm::mat4 modelMatrix, const glm::vec4& color)
 		renderer->data->SetColor(color);
 		renderer->data->NextVertex();
 	}
+}
+
+void Renderer::Draw(DrawData* data)
+{
+	if (!data->CanDraw())
+	{
+		return;
+	}
+
+	if (!Scene::CurrentExists())
+	{
+		data->Reset();
+		return;
+	}
+
+	auto start = std::chrono::high_resolution_clock::now();
+
+	data->Draw();
+
+	auto stop = std::chrono::high_resolution_clock::now();
+	auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(stop - start);
+	renderer->statistics.drawCalls++;
+	renderer->statistics.renderTime += duration;
+
+	data->Reset();
 }

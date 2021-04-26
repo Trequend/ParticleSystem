@@ -106,6 +106,40 @@ void ParticleSystemCPU::Emit(unsigned int count)
 	}
 }
 
+void ParticleSystemCPU::RenderParticle(const Particle *particle, float k)
+{
+	const glm::vec3 xAxis(1.0f, 0.0f, 0.0f);
+	const glm::vec3 yAxis(0.0f, 1.0f, 0.0f);
+	const glm::vec3 zAxis(0.0f, 0.0f, 1.0f);
+
+	glm::vec3 position = glm::mix(particle->previousPosition, particle->position, k);
+	glm::vec3 rotation = glm::mix(particle->previousRotation, particle->rotation, k);
+	glm::vec4 color = glm::mix(particle->previousColor, particle->color, k);
+	float size = glm::mix(particle->previousSize, particle->size, k);
+
+	glm::mat4 model = glm::translate(transform.GetMatrix(), position);
+	if (rotation.x != 0.0f)
+	{
+		model = glm::rotate(model, glm::radians(rotation.x), xAxis);
+	}
+
+	if (rotation.y != 0.0f)
+	{
+		model = glm::rotate(model, glm::radians(rotation.y), yAxis);
+	}
+
+	if (rotation.z != 0.0f)
+	{
+		model = glm::rotate(model, glm::radians(rotation.z), zAxis);
+	}
+
+	model = glm::scale(model, glm::vec3(size, size, 0.0f));
+	Renderer::DrawQuad(model, color);
+}
+
+void ParticleSystemCPU::OnRenderEnd()
+{ }
+
 ParticleSystemCPU::ParticleSystemCPU(
 	const std::string& name,
 	unsigned int poolSize,
@@ -183,37 +217,11 @@ void ParticleSystemCPU::UI()
 void ParticleSystemCPU::Render(float deltaTime, float step)
 {
 	struct Particle* particle = firstParticle;
-	
-	const glm::vec3 xAxis(1.0f, 0.0f, 0.0f);
-	const glm::vec3 yAxis(0.0f, 1.0f, 0.0f);
-	const glm::vec3 zAxis(0.0f, 0.0f, 1.0f);
-
 	const float k = deltaTime / step;
-
 	for (size_t i = 0; i < activeCount; i++, particle = particle->right)
 	{
-		glm::vec3 position = glm::mix(particle->previousPosition, particle->position, k);
-		glm::vec3 rotation = glm::mix(particle->previousRotation, particle->rotation, k);
-		glm::vec4 color = glm::mix(particle->previousColor, particle->color, k);
-		float size = glm::mix(particle->previousSize, particle->size, k);
-
-		glm::mat4 model = glm::translate(transform.GetMatrix(), position);
-		if (rotation.x != 0.0f)
-		{
-			model = glm::rotate(model, glm::radians(rotation.x), xAxis);
-		}
-
-		if (rotation.y != 0.0f)
-		{
-			model = glm::rotate(model, glm::radians(rotation.y), yAxis);
-		}
-		
-		if (rotation.z != 0.0f)
-		{
-			model = glm::rotate(model, glm::radians(rotation.z), zAxis);
-		}
-
-		model = glm::scale(model, glm::vec3(size, size, 0.0f));
-		Renderer::DrawQuad(model, color);
+		RenderParticle(particle, k);
 	}
+
+	OnRenderEnd();
 }

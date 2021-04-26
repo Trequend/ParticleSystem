@@ -7,12 +7,13 @@
 #include "VertexBuffer.hpp"
 #include "IndexBuffer.hpp"
 #include "VertexArray.hpp"
+#include "DrawData.hpp"
 #include "Shader.hpp"
 
 class Renderer
 {
 private:
-	class Data
+	class Data : public DrawData
 	{
 	private:
 		float* vertices;
@@ -74,4 +75,6 @@ public:
 	static const Statistics& GetStatistics();
 
 	static void DrawQuad(const glm::mat4 modelMatrix, const glm::vec4& color);
+
+	static void Draw(DrawData* data);
 };
