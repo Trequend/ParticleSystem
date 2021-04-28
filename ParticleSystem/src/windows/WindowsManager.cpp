@@ -22,7 +22,7 @@ void WindowsManager::SwitchFullscreen()
 
 void WindowsManager::Render()
 {
-	if (ImGui::IsKeyPressed('F', false))
+	if (ImGui::IsKeyPressed('Q', false))
 	{
 		SwitchFullscreen();
 	}
