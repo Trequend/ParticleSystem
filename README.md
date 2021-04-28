@@ -6,6 +6,15 @@ The goal of this project is to create a system of particles of three types (CPU,
 :construction: Particle system on GPU
 ## Demo
 ![Demo](https://github.com/Trequend/ParticleSystem/blob/media/Demo.gif)
+## Control
+* **Q** - toggle fullscreen
+* **W** - toggle ui
+## Program windows
+* **Windows** - window management
+* **Scene selector** - scene change
+* **Scene variables** - changing the parameters of objects on the scene
+* **Environment** - information about computer
+* **Performance** - statistics
 ## Tests
 #### Easy (1.5k particles)
 ![Easy](https://github.com/Trequend/ParticleSystem/blob/media/Easy.png)
