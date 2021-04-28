@@ -3,9 +3,9 @@
 layout (points) in;
 layout (triangle_strip, max_vertices = 4) out;
 
-in vec3 Rotation[];
+in vec3 QuadRotation[];
 in vec4 QuadColor[];
-in float Size[];
+in float QuadSize[];
 
 uniform mat4 ModelMatrix;
 uniform mat4 ViewProjectionMatrix;
@@ -58,7 +58,7 @@ mat4 RotationZ(float a)
 	);
 }
 
-mat4 RotationMatrix(vec3 r)
+mat4 Rotation(vec3 r)
 {
 	return RotationX(r.x) * RotationY(r.y) * RotationZ(r.z);
 }
@@ -78,8 +78,8 @@ void main()
 	float size2 = 0.5;
 	mat4 m = ViewProjectionMatrix
 	       * Translation(gl_in[0].gl_Position)
-	       * RotationMatrix(Rotation[0])
-	       * Scale(Size[0])
+	       * Rotation(QuadRotation[0])
+	       * Scale(QuadSize[0])
 	       * ModelMatrix;
 
 	gl_Position = m * vec4(-size2, -size2, 0.0, 1.0);
