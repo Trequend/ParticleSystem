@@ -77,10 +77,10 @@ void main()
 {
 	float size2 = 0.5;
 	mat4 m = ViewProjectionMatrix
+	       * ModelMatrix
 	       * Translation(gl_in[0].gl_Position)
 	       * Rotation(QuadRotation[0])
-	       * Scale(QuadSize[0])
-	       * ModelMatrix;
+	       * Scale(QuadSize[0]);
 
 	gl_Position = m * vec4(-size2, -size2, 0.0, 1.0);
 	Color = QuadColor[0];
