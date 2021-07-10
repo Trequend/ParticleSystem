@@ -21,7 +21,7 @@ void SceneSelector::Render()
 		return;
 	}
 
-	ImGui::SetNextWindowSize(ImVec2(250, 115), ImGuiCond_Always);
+	ImGui::SetNextWindowSize(ImVec2(280, 130), ImGuiCond_Always);
 	ImGui::Begin(name.c_str(), &isOpened, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse);
 	if (Scene::CurrentExists())
 	{
@@ -34,7 +34,7 @@ void SceneSelector::Render()
 	ImGui::InvisibleButton("##margin", ImVec2(1, 5));
 	ImGui::Combo("Scenes", &selectedScene, VectorGetter, &scenes, scenes.size());
 	ImGui::InvisibleButton("##margin", ImVec2(1, 5));
-	if (ImGui::Button("Select", ImVec2(235, 20)))
+	if (ImGui::Button("Select", ImVec2(265, -1)))
 	{
 		Scene::Load(scenes[selectedScene]);
 	}

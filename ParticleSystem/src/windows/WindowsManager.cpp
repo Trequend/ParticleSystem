@@ -37,7 +37,7 @@ void WindowsManager::Render()
 		return;
 	}
 
-	ImGui::SetNextWindowSize(ImVec2(250, 150), ImGuiCond_FirstUseEver);
+	ImGui::SetNextWindowSize(ImVec2(250, 150), ImGuiCond_Always);
 	ImGui::Begin(name.c_str(), &isOpened, ImGuiWindowFlags_NoResize);
 	for (size_t i = 0; i < windows.size(); i++)
 	{
