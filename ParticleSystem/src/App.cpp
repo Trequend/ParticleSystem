@@ -23,6 +23,8 @@
 #include "scenes/cpu_and_gpu/NormalTestCPUandGPU.hpp"
 #include "scenes/cpu_and_gpu/HardTestCPUandGPU.hpp"
 
+#include <Windows.h>
+
 void RegisterScenes()
 {
 	Scene::Register<Sandbox>("Sandbox");
@@ -57,7 +59,7 @@ bool InitGLFW()
 	return true;
 }
 
-GLFWwindow* CreateWindow(int width, int height, const char* title)
+GLFWwindow* CreateGLFWWindow(int width, int height, const char* title)
 {
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -205,7 +207,11 @@ void InitWindowsManager(WindowsManager& windowsManager)
 	windowsManager.AddWindow(new Performance());
 }
 
+#if _DEBUG
 int main()
+#else
+int WinMain(HINSTANCE hInst, HINSTANCE hInstPrev, PSTR cmdline, int cmdshow)
+#endif
 {
 	RegisterScenes();
 
@@ -214,7 +220,7 @@ int main()
 		return EXIT_FAILURE;
 	}
 
-	GLFWwindow* window = CreateWindow(1280, 720, "Particle system");
+	GLFWwindow* window = CreateGLFWWindow(1280, 720, "Particle system");
 	if (!window)
 	{
 		return EXIT_FAILURE;
@@ -265,7 +271,7 @@ int main()
 		if (Scene::CurrentExists() && width != 0 && height != 0)
 		{
 			Scene& scene = Scene::GetCurrent();
-			deltaTime += std::min(0.1, currentFrameTime - lastFrameTime);
+			deltaTime += min(0.1, currentFrameTime - lastFrameTime);
 
 			auto start = std::chrono::high_resolution_clock::now();
 			while (deltaTime >= step)
